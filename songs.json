@@ -1,0 +1,328 @@
+{
+  "songs": [
+    {
+      "title": "Ах, вы сени, мои сени",
+      "artist": "Русская народная",
+      "category": "russian folk",
+      "genre": "Русская народная"
+    },
+    {
+      "title": "Апрель",
+      "artist": "Сплин",
+      "category": "russian rock",
+      "genre": "Русский рок"
+    },
+    {
+      "title": "Аргентина-Ямайка 5:0",
+      "artist": "Чайф",
+      "category": "russian folk retro",
+      "genre": "Русский рок"
+    },
+    {
+      "title": "Без тебя",
+      "artist": "МакSим",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Беспечный ангел",
+      "artist": "Ария",
+      "category": "russian rock",
+      "genre": "Русский рок"
+    },
+    {
+      "title": "В последний раз",
+      "artist": "ДДТ",
+      "category": "russian rock",
+      "genre": "Русский рок"
+    },
+    {
+      "title": "Владимирский централ",
+      "artist": "Михаил Круг",
+      "category": "russian folk retro",
+      "genre": "Русский шансон"
+    },
+    {
+      "title": "Выпьем за любовь",
+      "artist": "Игорь Николаев",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Где же ты?",
+      "artist": "Валерий Меладзе",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Город золотой",
+      "artist": "Аквариум",
+      "category": "russian rock",
+      "genre": "Русский рок"
+    },
+    {
+      "title": "Группа крови",
+      "artist": "Кино",
+      "category": "russian rock",
+      "genre": "Русский рок"
+    },
+    {
+      "title": "Дорогой длинною",
+      "artist": "Алла Пугачева",
+      "category": "russian folk",
+      "genre": "Русская народная"
+    },
+    {
+      "title": "Еду к миленькой",
+      "artist": "Бутырка",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Жить",
+      "artist": "Григорий Лепс",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Замыкая круг",
+      "artist": "Круг",
+      "category": "russian rock",
+      "genre": "Русский рок"
+    },
+    {
+      "title": "Знаешь ли ты",
+      "artist": "МакSим",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Золотые купола",
+      "artist": "Александр Маршал",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Иволга",
+      "artist": "Нюша",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Искала",
+      "artist": "Земфира",
+      "category": "russian rock",
+      "genre": "Русский рок"
+    },
+    {
+      "title": "Каждый раз",
+      "artist": "Монеточка",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Комарово",
+      "artist": "Игорь Скляр",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Коробейники",
+      "artist": "Русская народная",
+      "category": "russian folk",
+      "genre": "Русская народная"
+    },
+    {
+      "title": "Кукушка",
+      "artist": "Полина Гагарина",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Лабиринт",
+      "artist": "Noize MC",
+      "category": "russian hiphop",
+      "genre": "Русский хип-хоп"
+    },
+    {
+      "title": "Лаванда",
+      "artist": "София Ротару",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Луч солнца золотого",
+      "artist": "Из м/ф \"Бременские музыканты\"",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Миллион алых роз",
+      "artist": "Алла Пугачева",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Надежда",
+      "artist": "Анна Герман",
+      "category": "russian folk",
+      "genre": "Русская народная"
+    },
+    {
+      "title": "От Волги до Енисея",
+      "artist": "ЛЮБЭ",
+      "category": "russian folk retro",
+      "genre": "Русская народная"
+    },
+    {
+      "title": "Офицеры",
+      "artist": "Олег Газманов",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Позови меня с собой",
+      "artist": "Алла Пугачева",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Районы-кварталы",
+      "artist": "Звери",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Свет в твоем окне",
+      "artist": "Фабрика",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Скованные одной цепью",
+      "artist": "Наутилус Помпилиус",
+      "category": "russian rock",
+      "genre": "Русский рок"
+    },
+    {
+      "title": "Солдат",
+      "artist": "Стас Михайлов",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Сэра",
+      "artist": "Валерий Меладзе",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Трава у дома",
+      "artist": "Земляне",
+      "category": "russian rock",
+      "genre": "Русский рок"
+    },
+    {
+      "title": "Тучи",
+      "artist": "Иванушки International",
+      "category": "russian rock",
+      "genre": "Русский рок"
+    },
+    {
+      "title": "Уличный боец",
+      "artist": "Каста",
+      "category": "russian hiphop",
+      "genre": "Русский хип-хоп"
+    },
+    {
+      "title": "Хали-гали",
+      "artist": "Ласковый май",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Что такое осень",
+      "artist": "ДДТ",
+      "category": "russian rock",
+      "genre": "Русский рок"
+    },
+    {
+      "title": "Шар цвета хаки",
+      "artist": "Алиса",
+      "category": "russian rock",
+      "genre": "Русский рок"
+    },
+    {
+      "title": "Экспонат",
+      "artist": "Ленинград",
+      "category": "russian pop",
+      "genre": "Русская поп-музыка"
+    },
+    {
+      "title": "Billie Jean",
+      "artist": "Michael Jackson",
+      "category": "foreign pop retro",
+      "genre": "Зарубежная поп-музыка"
+    },
+    {
+      "title": "Bohemian Rhapsody",
+      "artist": "Queen",
+      "category": "foreign rock retro",
+      "genre": "Зарубежный рок"
+    },
+    {
+      "title": "Dancing Queen",
+      "artist": "ABBA",
+      "category": "foreign disco retro",
+      "genre": "Зарубежное диско"
+    },
+    {
+      "title": "Happy",
+      "artist": "Pharrell Williams",
+      "category": "foreign pop",
+      "genre": "Зарубежная поп-музыка"
+    },
+    {
+      "title": "Lose Yourself",
+      "artist": "Eminem",
+      "category": "foreign hiphop",
+      "genre": "Зарубежный хип-хоп"
+    },
+    {
+      "title": "My Way",
+      "artist": "Frank Sinatra",
+      "category": "foreign pop retro",
+      "genre": "Зарубежная поп-музыка"
+    },
+    {
+      "title": "Nothing Else Matters",
+      "artist": "Metallica",
+      "category": "foreign rock retro",
+      "genre": "Зарубежный рок"
+    },
+    {
+      "title": "Shape of You",
+      "artist": "Ed Sheeran",
+      "category": "foreign pop",
+      "genre": "Зарубежная поп-музыка"
+    },
+    {
+      "title": "Smells Like Teen Spirit",
+      "artist": "Nirvana",
+      "category": "foreign rock retro",
+      "genre": "Зарубежный рок"
+    },
+    {
+      "title": "Sweet Child O' Mine",
+      "artist": "Guns N' Roses",
+      "category": "foreign rock retro",
+      "genre": "Зарубежный рок"
+    },
+    {
+      "title": "Uptown Funk",
+      "artist": "Mark Ronson ft. Bruno Mars",
+      "category": "foreign pop",
+      "genre": "Зарубежная поп-музыка"
+    }
+  ]
+    }
