@@ -502,6 +502,200 @@ section:nth-child(even) {
 }
 
 /* График работы и залы */
+
+/* Контейнер залов */
+.halls {
+    margin-top: 60px;
+}
+
+.halls h3 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.halls h3 i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    font-size: 1.5rem;
+}
+
+/* Слайдер залов */
+.halls-slider {
+    position: relative;
+    overflow: hidden;
+    margin: 0 -10px;
+}
+
+.slider-container {
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Карточка зала */
+.hall-card {
+    min-width: 100%;
+    background-color: rgba(26, 26, 46, 0.9);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    margin: 0 10px;
+    border: 1px solid rgba(255, 0, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.hall-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: var(--neon-glow);
+    transform: translateY(-10px) scale(1.02);
+}
+
+/* Изображение зала */
+.hall-image {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.hall-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.8s ease;
+}
+
+.hall-card:hover .hall-photo {
+    transform: scale(1.1);
+}
+
+/* Лейбл на фото зала */
+.hall-label {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Информация о зале */
+.hall-info {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.hall-info h4 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+.hall-info p {
+    color: #ddd;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+/* Особенности зала */
+.hall-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(255, 0, 255, 0.3);
+}
+
+.hall-features span {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.hall-features i {
+    margin-right: 8px;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    font-size: 1rem;
+    min-width: 20px;
+}
+
+/* Цена зала */
+.hall-price {
+    background: linear-gradient(45deg, rgba(255, 0, 255, 0.1), rgba(0, 255, 255, 0.1));
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: auto;
+    border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+.hall-price span {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+}
+
+/* Управление слайдером */
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.slider-controls button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--primary-color), #ff66cc);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--neon-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-controls button:hover {
+    background: linear-gradient(45deg, #ff66cc, var(--primary-color));
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.9);
+}
+
+.slider-controls button:active {
+    transform: scale(0.95);
+}
+
+/* График работы */
 .schedule {
     margin-bottom: 60px;
 }
@@ -510,12 +704,14 @@ section:nth-child(even) {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    font-size: 1.8rem;
 }
 
 .schedule h3 i {
     margin-right: 10px;
     color: var(--primary-color);
     text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    font-size: 1.5rem;
 }
 
 .schedule-grid {
@@ -528,108 +724,123 @@ section:nth-child(even) {
 .schedule-day {
     display: flex;
     justify-content: space-between;
-    padding: 15px;
+    align-items: center;
+    padding: 18px 20px;
     background-color: rgba(26, 26, 46, 0.7);
-    border-radius: 5px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 0, 255, 0.2);
     backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.schedule-day:hover {
+    border-color: var(--primary-color);
+    transform: translateX(5px);
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+}
+
+.schedule-day span:first-child {
+    font-weight: 500;
+    color: #ddd;
+}
+
+.schedule-day span:last-child {
+    font-weight: 700;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
 }
 
 .note {
     font-style: italic;
     color: var(--gray-color);
-    margin-top: 10px;
-    font-size: 0.9rem;
-}
-
-/* Слайдер залов */
-.halls-slider {
-    position: relative;
-    overflow: hidden;
-}
-
-.slider-container {
-    overflow: hidden;
-}
-
-.slider-track {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-
-.hall-card {
-    min-width: 100%;
-    background-color: rgba(26, 26, 46, 0.7);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    margin: 0 10px;
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(5px);
-    transition: all 0.3s ease;
-}
-
-.hall-card:hover {
-    border-color: var(--primary-color);
-    box-shadow: var(--neon-glow);
-}
-
-.hall-image {
-    height: 200px;
-}
-
-.hall-info {
-    padding: 20px;
-}
-
-.hall-info h4 {
-    margin-bottom: 10px;
-}
-
-.hall-features {
-    display: flex;
-    justify-content: space-between;
     margin-top: 15px;
     font-size: 0.9rem;
+    padding-left: 10px;
+    border-left: 3px solid var(--primary-color);
 }
 
-.hall-features span {
-    display: flex;
-    align-items: center;
+/* Адаптивность для планшетов */
+@media (min-width: 768px) {
+    .schedule-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+   
+    .hall-image {
+        height: 280px;
+    }
+   
+    .hall-features {
+        grid-template-columns: repeat(4, 1fr);
+    }
+   
+    .hall-card {
+        min-width: calc(50% - 20px);
+    }
 }
 
-.hall-features i {
-    margin-right: 5px;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+/* Адаптивность для десктопов */
+@media (min-width: 992px) {
+    .hall-image {
+        height: 320px;
+    }
+   
+    .hall-card {
+        min-width: calc(33.333% - 20px);
+    }
+   
+    .schedule-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+   
+    .schedule-day {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+   
+    .schedule-day span:first-child {
+        font-size: 0.95rem;
+    }
+   
+    .schedule-day span:last-child {
+        font-size: 1.1rem;
+    }
 }
 
-.slider-controls {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
+/* Адаптивность для больших экранов */
+@media (min-width: 1200px) {
+    .hall-image {
+        height: 350px;
+    }
+   
+    .halls-slider {
+        margin: 0 -15px;
+    }
+   
+    .hall-card {
+        margin: 0 15px;
+        min-width: calc(33.333% - 30px);
+    }
 }
 
-.slider-controls button {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(45deg, var(--primary-color), #ff66cc);
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    box-shadow: var(--neon-glow);
+/* Анимация загрузки для изображений */
+.hall-photo.loading {
+    background: linear-gradient(90deg,
+        rgba(255, 0, 255, 0.1) 25%,
+        rgba(0, 255, 255, 0.2) 50%,
+        rgba(255, 0, 255, 0.1) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
 }
 
-.slider-controls button:hover {
-    background: linear-gradient(45deg, #ff66cc, var(--primary-color));
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(255, 0, 255, 0.9);
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
+
+
+
 
 /* Бронирование */
 .booking-container {
