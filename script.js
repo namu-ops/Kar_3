@@ -507,6 +507,44 @@ function initializeMenuTabs() {
     });
 }
 
+// Функция для инициализации ссылок подменю
+function initializeSubmenuLinks() {
+    // Обработка ссылок в десктопном меню
+    document.querySelectorAll('.dropdown-menu a, .mobile-submenu a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+           
+            const tabId = this.getAttribute('data-tab');
+            if (tabId) {
+                // Находим секцию меню
+                const menuSection = document.getElementById('menu');
+                if (menuSection) {
+                    // Скроллим к секции меню
+                    window.scrollTo({
+                        top: menuSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                   
+                    // Активируем соответствующую вкладку
+                    setTimeout(() => {
+                        const tabButton = document.querySelector(`.menu-tab[data-tab="${tabId}"]`);
+                        if (tabButton) {
+                            tabButton.click();
+                        }
+                    }, 300);
+                }
+            }
+           
+            // Закрываем мобильное меню, если оно открыто
+            const mobileMenu = document.querySelector('.mobile-menu');
+            if (mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+}
+
 // Функция для инициализации слайдеров
 function initializeSliders() {
     // Слайдер залов
@@ -752,6 +790,8 @@ async function initializeApp() {
     
     // Инициализация меню
     initializeMenuTabs();
+    
+     initializeSubmenuLinks();
     
     // Инициализация слайдеров
     initializeSliders();
