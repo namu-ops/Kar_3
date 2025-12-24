@@ -1,1981 +1,2371 @@
-/* Основные стили */
+```css
+/* =============================================
+   GLOBAL RESET & BASE STYLES
+   ============================================= */
+/* Убираем стандартные отступы и включаем border-box для всех элементов */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* box-sizing: border-box гарантирует, что padding и border включены в ширину элемента */
 }
 
+/* =============================================
+   CSS CUSTOM PROPERTIES (CSS Variables)
+   ============================================= */
 :root {
-    --primary-color: #ff00ff; /* Неоновый розовый */
-    --secondary-color: #00ffff; /* Неоновый голубой */
-    --accent-color: #ffff00; /* Неоновый желтый */
-    --dark-color: #0a0a1a; /* Темно-синий */
-    --dark-blue: #0d1028;
-    --light-color: #1a1a2e; /* Светлый темно-синий */
-    --gray-color: #8a8aa3;
-    --gray-light: #2a2a3e;
-    --success-color: #00ff88;
-    --font-main: 'Montserrat', sans-serif;
-    --neon-glow: 0 0 10px rgba(255, 0, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.5), 0 0 30px rgba(255, 0, 255, 0.3);
-    --neon-blue-glow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.3);
+    /* Цветовая палитра в неоновом стиле */
+    --primary-color: #ff00ff;          /* Основной неоновый розовый */
+    --secondary-color: #00ffff;        /* Вторичный неоновый голубой */
+    --accent-color: #ffff00;           /* Акцентный неоновый желтый */
+    --dark-color: #0a0a1a;             /* Темный фон для мобильного меню */
+    --dark-blue: #0d1028;              /* Основной темно-синий фон */
+    --light-color: #1a1a2e;            /* Светлый темно-синий для секций */
+    --gray-color: #8a8aa3;             /* Серый для второстепенного текста */
+    --gray-light: #2a2a3e;             /* Светло-серый для границ */
+    --success-color: #00ff88;          /* Зеленый для успешных сообщений */
+    
+    /* Шрифты */
+    --font-main: 'Montserrat', sans-serif; /* Основной шрифт */
+    
+    /* Эффекты свечения */
+    --neon-glow: 0 0 10px rgba(255, 0, 255, 0.7), 
+                 0 0 20px rgba(255, 0, 255, 0.5), 
+                 0 0 30px rgba(255, 0, 255, 0.3); /* Розовое свечение */
+    --neon-blue-glow: 0 0 10px rgba(0, 255, 255, 0.7), 
+                      0 0 20px rgba(0, 255, 255, 0.5), 
+                      0 0 30px rgba(0, 255, 255, 0.3); /* Голубое свечение */
 }
 
+/* =============================================
+   HTML & BODY
+   ============================================= */
+/* Плавная прокрутка по якорным ссылкам */
 html {
     scroll-behavior: smooth;
 }
 
+/* Основные стили для body */
 body {
-    font-family: var(--font-main);
-    font-size: 16px;
-    line-height: 1.6;
-    color: #f0f0f0;
-    background-color: var(--dark-blue);
-    overflow-x: hidden;
+    font-family: var(--font-main);    /* Используем основной шрифт */
+    font-size: 16px;                   /* Базовый размер шрифта */
+    line-height: 1.6;                  /* Межстрочный интервал */
+    color: #f0f0f0;                    /* Цвет текста */
+    background-color: var(--dark-blue); /* Фон страницы */
+    overflow-x: hidden;                /* Скрываем горизонтальный скролл */
 }
 
+/* =============================================
+   CONTAINER
+   ============================================= */
+/* Центрирующий контейнер с фиксированной максимальной шириной */
 .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: 100%;                      /* Полная ширина */
+    max-width: 1200px;                /* Максимальная ширина контента */
+    margin: 0 auto;                   /* Центрирование по горизонтали */
+    padding: 0 20px;                  /* Горизонтальные отступы */
 }
 
-/* Кнопки */
+/* =============================================
+   BUTTONS
+   ============================================= */
+/* Базовый стиль для всех кнопок */
 .btn {
-    display: inline-block;
-    padding: 12px 28px;
-    border-radius: 50px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-    letter-spacing: 1px;
+    display: inline-block;             /* Строчно-блочный элемент */
+    padding: 12px 28px;               /* Внутренние отступы */
+    border-radius: 50px;               /* Круглые углы */
+    font-weight: 700;                  /* Жирный текст */
+    text-decoration: none;             /* Убираем подчеркивание */
+    transition: all 0.3s ease;         /* Плавные переходы */
+    border: none;                      /* Без границы */
+    cursor: pointer;                   /* Курсор-указатель */
+    font-size: 16px;                   /* Размер шрифта */
+    text-align: center;                /* Выравнивание текста */
+    letter-spacing: 1px;               /* Разрядка букв */
 }
 
+/* Основная кнопка (розовая) */
 .btn-primary {
-    background: linear-gradient(45deg, var(--primary-color), #ff66cc);
-    color: white;
-    box-shadow: var(--neon-glow);
-    animation: neon-pulse 2s infinite;
+    background: linear-gradient(45deg, var(--primary-color), #ff66cc); /* Градиент */
+    color: white;                       /* Белый текст */
+    box-shadow: var(--neon-glow);       /* Неоновое свечение */
+    animation: neon-pulse 2s infinite;  /* Анимация пульсации */
 }
 
+/* Эффекты при наведении на основную кнопку */
 .btn-primary:hover {
-    background: linear-gradient(45deg, #ff66cc, var(--primary-color));
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 0 15px rgba(255, 0, 255, 0.9), 0 0 25px rgba(255, 0, 255, 0.7);
+    background: linear-gradient(45deg, #ff66cc, var(--primary-color)); /* Инвертируем градиент */
+    transform: translateY(-3px) scale(1.05); /* Поднимаем и увеличиваем кнопку */
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.9), 
+                0 0 25px rgba(255, 0, 255, 0.7); /* Усиливаем свечение */
 }
 
+/* Вторичная кнопка (голубая) */
 .btn-secondary {
-    background: linear-gradient(45deg, var(--secondary-color), #66ffff);
-    color: #0a0a1a;
-    box-shadow: var(--neon-blue-glow);
+    background: linear-gradient(45deg, var(--secondary-color), #66ffff); /* Голубой градиент */
+    color: #0a0a1a;                     /* Темный текст для контраста */
+    box-shadow: var(--neon-blue-glow);   /* Голубое свечение */
 }
 
+/* Эффекты при наведении на вторичную кнопку */
 .btn-secondary:hover {
-    background: linear-gradient(45deg, #66ffff, var(--secondary-color));
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.9), 0 0 25px rgba(0, 255, 255, 0.7);
+    background: linear-gradient(45deg, #66ffff, var(--secondary-color)); /* Инвертируем градиент */
+    transform: translateY(-3px) scale(1.05); /* Поднимаем и увеличиваем */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.9), 
+                0 0 25px rgba(0, 255, 255, 0.7); /* Усиливаем свечение */
 }
 
+/* Маленькая кнопка (уменьшенный размер) */
 .btn-small {
-    padding: 8px 16px;
-    font-size: 14px;
+    padding: 8px 16px;                  /* Меньшие отступы */
+    font-size: 14px;                    /* Меньший размер шрифта */
 }
 
+/* =============================================
+   NEON PULSE ANIMATION
+   ============================================= */
+/* Анимация пульсации для неонового свечения */
 @keyframes neon-pulse {
     0%, 100% {
-        box-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.5);
+        box-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 
+                    0 0 20px rgba(255, 0, 255, 0.5);
     }
     50% {
-        box-shadow: 0 0 15px rgba(255, 0, 255, 0.9), 0 0 30px rgba(255, 0, 255, 0.7);
+        box-shadow: 0 0 15px rgba(255, 0, 255, 0.9), 
+                    0 0 30px rgba(255, 0, 255, 0.7);
     }
 }
 
-/* Заголовки */
+/* =============================================
+   TYPOGRAPHY
+   ============================================= */
+/* Стили для заголовков */
 h1, h2, h3, h4 {
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 15px;
+    font-weight: 700;                   /* Жирный шрифт */
+    line-height: 1.2;                   /* Межстрочный интервал */
+    margin-bottom: 15px;                /* Отступ снизу */
 }
 
-h1 {
-    font-size: 2.5rem;
-}
+/* Размеры заголовков */
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.2rem; }
 
-h2 {
-    font-size: 2rem;
-}
-
-h3 {
-    font-size: 1.5rem;
-}
-
-h4 {
-    font-size: 1.2rem;
-}
-
+/* Стиль для заголовков секций */
 .section-title {
-    text-align: center;
-    margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 15px;
+    text-align: center;                 /* Центрирование текста */
+    margin-bottom: 20px;                /* Отступ снизу */
+    position: relative;                 /* Для позиционирования псевдоэлемента */
+    padding-bottom: 15px;               /* Отступ для декоративной линии */
 }
 
+/* Декоративная линия под заголовком секции */
 .section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    box-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+    content: '';                        /* Обязательно для псевдоэлемента */
+    position: absolute;                 /* Абсолютное позиционирование */
+    bottom: 0;                          /* Прижимаем к низу */
+    left: 50%;                          /* Центрируем по горизонтали */
+    transform: translateX(-50%);        /* Смещаем на половину ширины */
+    width: 80px;                        /* Ширина линии */
+    height: 3px;                        /* Высота линии */
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); /* Градиент */
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Подзаголовок секции */
 .section-subtitle {
-    text-align: center;
-    color: var(--gray-color);
-    margin-bottom: 40px;
-    font-size: 1.1rem;
+    text-align: center;                 /* Центрирование текста */
+    color: var(--gray-color);           /* Серый цвет */
+    margin-bottom: 40px;                /* Отступ снизу */
+    font-size: 1.1rem;                  /* Размер шрифта */
 }
 
-/* Шапка */
+/* =============================================
+   HEADER SECTION
+   ============================================= */
+/* Шапка с видео-фоном */
 .header {
-    position: relative;
-    height: 100vh;
-    min-height: 600px;
-    color: white;
-    overflow: hidden;
+    position: relative;                 /* Для позиционирования дочерних элементов */
+    height: 100vh;                      /* Полная высота экрана */
+    min-height: 600px;                  /* Минимальная высота */
+    color: white;                       /* Белый текст */
+    overflow: hidden;                   /* Скрываем переполнение */
 }
 
+/* Контейнер для видео-фона */
 .video-container {
-    position: absolute;
+    position: absolute;                 /* Абсолютное позиционирование */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
+    width: 100%;                       /* Полная ширина */
+    height: 100%;                      /* Полная высота */
+    z-index: -2;                       /* Отправляем на задний план (под оверлей) */
 }
 
+/* Стили для видео */
 .video-container video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100%;                       /* Растягиваем на всю ширину */
+    height: 100%;                      /* Растягиваем на всю высоту */
+    object-fit: cover;                 /* Обрезаем видео, сохраняя пропорции */
 }
 
+/* Наложение поверх видео для лучшей читаемости текста */
 .video-overlay {
-    position: absolute;
+    position: absolute;                 /* Абсолютное позиционирование */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(13, 16, 40, 0.9), rgba(13, 16, 40, 0.7));
-    z-index: -1;
+    width: 100%;                       /* Полная ширина */
+    height: 100%;                      /* Полная высота */
+    background: linear-gradient(to bottom, rgba(13, 16, 40, 0.9), rgba(13, 16, 40, 0.7)); /* Градиентное затемнение */
+    z-index: -1;                       /* Между видео и контентом */
 }
 
-/* Навигация */
+/* =============================================
+   NAVIGATION
+   ============================================= */
+/* Панель навигации (фиксированная) */
 .navbar {
-    position: fixed;
+    position: fixed;                    /* Фиксируем вверху экрана */
     top: 0;
     left: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 15px 0;
-    background-color: rgba(13, 16, 40, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 0, 255, 0.3);
-    transition: all 0.3s ease;
+    width: 100%;                       /* Полная ширина */
+    z-index: 1000;                     /* Высокий z-index, чтобы было поверх всего */
+    padding: 15px 0;                   /* Вертикальные отступы */
+    background-color: rgba(13, 16, 40, 0.95); /* Полупрозрачный фон */
+    backdrop-filter: blur(10px);       /* Размытие фона под навигацией */
+    border-bottom: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница снизу */
+    transition: all 0.3s ease;         /* Плавный переход для всех свойств */
 }
 
+/* Стиль навигации при прокрутке */
 .navbar.scrolled {
-    background-color: rgba(13, 16, 40, 0.98);
-    padding: 12px 0;
-    box-shadow: var(--neon-glow);
+    background-color: rgba(13, 16, 40, 0.98); /* Менее прозрачный фон */
+    padding: 12px 0;                   /* Уменьшаем отступы */
+    box-shadow: var(--neon-glow);      /* Добавляем свечение */
 }
 
+/* Контейнер элементов навигации */
 .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex;                      /* Flexbox для расположения элементов */
+    justify-content: space-between;     /* Лого слева, меню справа */
+    align-items: center;                /* Вертикальное выравнивание по центру */
 }
 
+/* Логотип */
 .logo a {
-    display: flex;
-    align-items: center;
-    color: white;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.5rem;
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
+    color: white;                       /* Белый цвет */
+    text-decoration: none;              /* Убираем подчеркивание */
+    font-weight: 700;                   /* Жирный шрифт */
+    font-size: 1.5rem;                  /* Размер шрифта */
 }
 
+/* Иконка в логотипе */
 .logo i {
-    margin-right: 10px;
-    color: var(--primary-color);
-    font-size: 1.8rem;
-    text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+    margin-right: 10px;                 /* Отступ справа от иконки */
+    color: var(--primary-color);        /* Розовый цвет */
+    font-size: 1.8rem;                  /* Размер иконки */
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
-/* Десктопное меню */
+/* =============================================
+   DESKTOP MENU
+   ============================================= */
+/* Десктопное меню (скрыто на мобильных) */
 .desktop-menu {
-    display: none;
+    display: none;                      /* По умолчанию скрыто */
 }
 
+/* Список меню */
 .menu-list {
-    display: flex;
-    list-style: none;
+    display: flex;                      /* Горизонтальное расположение */
+    list-style: none;                   /* Убираем маркеры списка */
 }
 
+/* Элементы меню */
 .menu-list > li {
-    margin-left: 25px;
-    position: relative;
+    margin-left: 25px;                  /* Отступы между элементами */
+    position: relative;                 /* Для позиционирования выпадающего меню */
 }
 
+/* Ссылки в меню */
 .menu-list a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-    display: flex;
-    align-items: center;
+    color: white;                       /* Белый цвет */
+    text-decoration: none;              /* Убираем подчеркивание */
+    font-weight: 500;                   /* Средняя насыщенность шрифта */
+    font-size: 1rem;                    /* Размер шрифта */
+    transition: color 0.3s ease;        /* Плавный переход цвета */
+    display: flex;                      /* Flexbox для иконки */
+    align-items: center;                /* Вертикальное выравнивание */
 }
 
+/* Эффект при наведении на ссылку */
 .menu-list a:hover {
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    color: var(--primary-color);        /* Меняем цвет на розовый */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Добавляем свечение */
 }
 
+/* Иконка стрелки в ссылках с подменю */
 .menu-list a i {
-    margin-left: 5px;
-    font-size: 0.8rem;
+    margin-left: 5px;                   /* Отступ слева от иконки */
+    font-size: 0.8rem;                  /* Размер иконки */
 }
 
+/* =============================================
+   DROPDOWN MENU (for desktop)
+   ============================================= */
 /* Выпадающее меню */
 .dropdown-menu {
-    position: absolute;
-    top: 100%;
+    position: absolute;                 /* Абсолютное позиционирование */
+    top: 100%;                         /* Позиционируем под родительским элементом */
     left: 0;
-    background-color: rgba(26, 26, 46, 0.95);
-    backdrop-filter: blur(10px);
-    min-width: 200px;
-    border-radius: 5px;
-    box-shadow: var(--neon-glow);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-    z-index: 100;
-    border: 1px solid rgba(255, 0, 255, 0.3);
+    background-color: rgba(26, 26, 46, 0.95); /* Полупрозрачный фон */
+    backdrop-filter: blur(10px);       /* Размытие фона */
+    min-width: 200px;                  /* Минимальная ширина */
+    border-radius: 5px;                /* Скругленные углы */
+    box-shadow: var(--neon-glow);      /* Свечение */
+    opacity: 0;                        /* Начальная прозрачность (скрыто) */
+    visibility: hidden;                /* Начальная видимость (скрыто) */
+    transform: translateY(10px);       /* Смещено вниз */
+    transition: all 0.3s ease;         /* Плавные переходы */
+    z-index: 100;                      /* z-index для отображения поверх */
+    border: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница */
 }
 
+/* Показываем выпадающее меню при наведении */
 .has-dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+    opacity: 1;                        /* Полная непрозрачность */
+    visibility: visible;               /* Делаем видимым */
+    transform: translateY(0);          /* Возвращаем на место */
 }
 
+/* Элементы выпадающего меню */
 .dropdown-menu li {
-    margin: 0;
+    margin: 0;                         /* Убираем отступы */
 }
 
+/* Ссылки в выпадающем меню */
 .dropdown-menu a {
-    color: #f0f0f0;
-    padding: 12px 20px;
-    display: block;
-    border-bottom: 1px solid var(--gray-light);
+    color: #f0f0f0;                    /* Светло-серый цвет */
+    padding: 12px 20px;                /* Внутренние отступы */
+    display: block;                    /* Блочный элемент на всю ширину */
+    border-bottom: 1px solid var(--gray-light); /* Разделительные линии */
 }
 
+/* Эффект при наведении на ссылку в выпадающем меню */
 .dropdown-menu a:hover {
-    background-color: rgba(255, 0, 255, 0.2);
-    color: var(--primary-color);
+    background-color: rgba(255, 0, 255, 0.2); /* Розовый фон */
+    color: var(--primary-color);        /* Розовый текст */
 }
 
-/* Мобильное меню кнопка */
+/* =============================================
+   MOBILE MENU BUTTON
+   ============================================= */
+/* Кнопка открытия мобильного меню */
 .mobile-menu-btn {
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
+    color: white;                       /* Белый цвет */
+    font-size: 1.5rem;                  /* Размер иконки */
+    cursor: pointer;                    /* Курсор-указатель */
 }
 
-/* Мобильное меню */
+/* =============================================
+   MOBILE MENU
+   ============================================= */
+/* Мобильное меню (выдвижная панель) */
 .mobile-menu {
-    position: fixed;
+    position: fixed;                    /* Фиксированное позиционирование */
     top: 0;
-    right: -100%;
-    width: 100%;
-    max-width: 320px;
-    height: 100vh;
-    background-color: var(--dark-color);
-    z-index: 2000;
-    transition: right 0.4s ease;
-    overflow-y: auto;
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
-    border-left: 1px solid rgba(255, 0, 255, 0.3);
+    right: -100%;                      /* Начальная позиция за пределами экрана справа */
+    width: 100%;                       /* Полная ширина на мобильных */
+    max-width: 320px;                  /* Максимальная ширина */
+    height: 100vh;                     /* Полная высота экрана */
+    background-color: var(--dark-color); /* Темный фон */
+    z-index: 2000;                     /* Очень высокий z-index */
+    transition: right 0.4s ease;       /* Плавное выдвижение */
+    overflow-y: auto;                  /* Вертикальный скролл при необходимости */
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3); /* Тень слева */
+    border-left: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница слева */
 }
 
+/* Класс для отображения мобильного меню */
 .mobile-menu.active {
-    right: 0;
+    right: 0;                          /* Сдвигаем в видимую область */
 }
 
+/* Шапка мобильного меню */
 .mobile-menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: var(--dark-blue);
-    color: white;
-    border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+    display: flex;                      /* Flexbox для лого и кнопки закрытия */
+    justify-content: space-between;     /* Разделяем по краям */
+    align-items: center;                /* Вертикальное выравнивание */
+    padding: 20px;                      /* Внутренние отступы */
+    background-color: var(--dark-blue); /* Фон */
+    color: white;                       /* Белый текст */
+    border-bottom: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница снизу */
 }
 
+/* Логотип в мобильном меню */
 .mobile-logo {
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    font-size: 1.2rem;
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
+    font-weight: 700;                   /* Жирный шрифт */
+    font-size: 1.2rem;                  /* Размер шрифта */
 }
 
+/* Иконка в логотипе мобильного меню */
 .mobile-logo i {
-    margin-right: 10px;
-    color: var(--primary-color);
+    margin-right: 10px;                 /* Отступ справа от иконки */
+    color: var(--primary-color);        /* Розовый цвет */
 }
 
+/* Кнопка закрытия мобильного меню */
 .mobile-menu-close {
-    font-size: 1.5rem;
-    cursor: pointer;
+    font-size: 1.5rem;                  /* Размер иконки */
+    cursor: pointer;                    /* Курсор-указатель */
 }
 
+/* Список мобильного меню */
 .mobile-menu-list {
-    list-style: none;
-    padding: 20px 0;
+    list-style: none;                   /* Убираем маркеры списка */
+    padding: 20px 0;                    /* Вертикальные отступы */
 }
 
+/* Элементы мобильного меню */
 .mobile-menu-list li {
-    border-bottom: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--gray-light); /* Разделительные линии */
 }
 
+/* Ссылки в мобильном меню */
 .mobile-menu-list a {
-    display: block;
-    padding: 15px 20px;
-    color: #f0f0f0;
-    text-decoration: none;
-    font-weight: 500;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block;                     /* Блочный элемент на всю ширину */
+    padding: 15px 20px;                 /* Внутренние отступы */
+    color: #f0f0f0;                     /* Светло-серый цвет */
+    text-decoration: none;              /* Убираем подчеркивание */
+    font-weight: 500;                   /* Средняя насыщенность шрифта */
+    display: flex;                      /* Flexbox для стрелочки */
+    justify-content: space-between;     /* Текст слева, стрелка справа */
+    align-items: center;                /* Вертикальное выравнивание */
 }
 
+/* Эффект при наведении на ссылку в мобильном меню */
 .mobile-menu-list a:hover {
-    background-color: rgba(255, 0, 255, 0.2);
-    color: var(--primary-color);
+    background-color: rgba(255, 0, 255, 0.2); /* Розовый фон */
+    color: var(--primary-color);        /* Розовый текст */
 }
 
+/* Подменю в мобильном меню */
 .mobile-submenu {
-    list-style: none;
-    background-color: rgba(42, 42, 62, 0.5);
-    display: none;
+    list-style: none;                   /* Убираем маркеры списка */
+    background-color: rgba(42, 42, 62, 0.5); /* Фон подменю */
+    display: none;                      /* По умолчанию скрыто */
 }
 
+/* Класс для отображения подменю */
 .mobile-submenu.active {
-    display: block;
+    display: block;                     /* Показываем подменю */
 }
 
+/* Ссылки в подменю (с большим отступом слева) */
 .mobile-submenu a {
-    padding-left: 40px;
+    padding-left: 40px;                 /* Увеличиваем отступ слева */
 }
 
-/* Контент шапки */
+/* =============================================
+   HEADER CONTENT
+   ============================================= */
+/* Контент в шапке (текст и кнопки) */
 .header-content {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 80px;
+    height: 100%;                       /* Полная высота родителя */
+    display: flex;                      /* Flexbox для вертикального центрирования */
+    flex-direction: column;             /* Вертикальное расположение */
+    justify-content: center;            /* Вертикальное центрирование */
+    padding-top: 80px;                  /* Отступ сверху (чтобы не залезало под навигацию) */
 }
 
+/* Заголовок в шапке */
 .header-content h1 {
-    font-size: 2.2rem;
-    margin-bottom: 15px;
+    font-size: 2.2rem;                  /* Размер шрифта */
+    margin-bottom: 15px;                /* Отступ снизу */
 }
 
+/* Выделенный текст в заголовке */
 .highlight {
-    color: var(--primary-color);
-    text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+    color: var(--primary-color);        /* Розовый цвет */
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Подзаголовок в шапке */
 .subtitle {
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    font-weight: 500;
+    font-size: 1.3rem;                  /* Размер шрифта */
+    margin-bottom: 15px;                /* Отступ снизу */
+    font-weight: 500;                   /* Средняя насыщенность шрифта */
 }
 
+/* Описание в шапке */
 .description {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-    max-width: 600px;
+    font-size: 1.1rem;                  /* Размер шрифта */
+    margin-bottom: 30px;                /* Отступ снизу */
+    max-width: 600px;                   /* Максимальная ширина текста */
 }
 
+/* Контейнер для кнопок в шапке */
 .header-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    display: flex;                      /* Flexbox для кнопок */
+    flex-direction: column;             /* Вертикальное расположение на мобильных */
+    gap: 15px;                          /* Расстояние между кнопками */
 }
 
-/* Секции */
+/* =============================================
+   SECTIONS
+   ============================================= */
+/* Общие стили для всех секций */
 section {
-    padding: 80px 0;
+    padding: 80px 0;                    /* Большие вертикальные отступы */
 }
 
+/* Чередующийся фон для четных секций */
 section:nth-child(even) {
-    background-color: rgba(26, 26, 46, 0.5);
+    background-color: rgba(26, 26, 46, 0.5); /* Полупрозрачный темный фон */
 }
 
-/* О заведении */
+/* =============================================
+   ABOUT SECTION
+   ============================================= */
+/* Контейнер содержимого секции "О заведении" */
 .about-content {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    display: flex;                      /* Flexbox для текста и изображения */
+    flex-direction: column;             /* Вертикальное расположение на мобильных */
+    gap: 40px;                          /* Расстояние между элементами */
 }
 
+/* Сетка преимуществ */
 .features {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 25px;
-    margin-top: 30px;
+    display: grid;                      /* CSS Grid для карточек преимуществ */
+    grid-template-columns: 1fr;         /* Одна колонка на мобильных */
+    gap: 25px;                          /* Расстояние между карточками */
+    margin-top: 30px;                   /* Отступ сверху */
 }
 
+/* Карточка преимущества */
 .feature {
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: rgba(26, 26, 46, 0.7);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(5px);
+    text-align: center;                 /* Центрируем текст и иконку */
+    padding: 20px;                      /* Внутренние отступы */
+    border-radius: 10px;                /* Скругленные углы */
+    background-color: rgba(26, 26, 46, 0.7); /* Полупрозрачный фон */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Тень */
+    transition: transform 0.3s ease;    /* Плавный переход для трансформации */
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Розовая граница */
+    backdrop-filter: blur(5px);         /* Легкое размытие фона */
 }
 
+/* Эффект при наведении на карточку преимущества */
 .feature:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary-color);
-    box-shadow: var(--neon-glow);
+    transform: translateY(-5px);        /* Поднимаем карточку */
+    border-color: var(--primary-color); /* Меняем цвет границы на розовый */
+    box-shadow: var(--neon-glow);       /* Добавляем свечение */
 }
 
+/* Иконка в карточке преимущества */
 .feature i {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+    font-size: 2.5rem;                  /* Размер иконки */
+    color: var(--primary-color);        /* Розовый цвет */
+    margin-bottom: 15px;                /* Отступ снизу */
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Заголовок в карточке преимущества */
 .feature h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1.2rem;                  /* Размер шрифта */
+    margin-bottom: 10px;                /* Отступ снизу */
 }
 
+/* Контейнер для изображения в секции "О заведении" */
 .about-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex;                      /* Flexbox для центрирования */
+    justify-content: center;            /* Горизонтальное центрирование */
+    align-items: center;                /* Вертикальное центрирование */
 }
 
+/* Заглушка для изображения (пока нет реального фото) */
 .image-placeholder {
-    width: 100%;
-    height: 300px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 1.2rem;
-    box-shadow: var(--neon-glow);
+    width: 100%;                        /* Полная ширина */
+    height: 300px;                      /* Фиксированная высота */
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Градиентный фон */
+    border-radius: 10px;                /* Скругленные углы */
+    display: flex;                      /* Flexbox для контента */
+    flex-direction: column;             /* Вертикальное расположение иконки и текста */
+    justify-content: center;            /* Вертикальное центрирование */
+    align-items: center;                /* Горизонтальное центрирование */
+    color: white;                       /* Белый текст */
+    font-size: 1.2rem;                  /* Размер шрифта */
+    box-shadow: var(--neon-glow);       /* Свечение */
 }
 
+/* Иконка в заглушке изображения */
 .image-placeholder i {
-    font-size: 4rem;
-    margin-bottom: 15px;
+    font-size: 4rem;                    /* Крупная иконка */
+    margin-bottom: 15px;                /* Отступ снизу */
 }
 
-/* График работы и залы */
-
-/* Контейнер залов */
+/* =============================================
+   HALLS & SCHEDULE SECTION
+   ============================================= */
+/* Контейнер для залов */
 .halls {
-    margin-top: 60px;
+    margin-top: 60px;                   /* Отступ сверху */
 }
 
+/* Заголовок "Наши залы" */
 .halls h3 {
-    display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-    font-size: 1.8rem;
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
+    margin-bottom: 30px;                /* Отступ снизу */
+    font-size: 1.8rem;                  /* Размер шрифта */
 }
 
+/* Иконка в заголовке "Наши залы" */
 .halls h3 i {
-    margin-right: 10px;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
-    font-size: 1.5rem;
+    margin-right: 10px;                 /* Отступ справа от иконки */
+    color: var(--primary-color);        /* Розовый цвет */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
+    font-size: 1.5rem;                  /* Размер иконки */
 }
 
-/* Слайдер залов */
+/* =============================================
+   HALLS SLIDER
+   ============================================= */
+/* Контейнер слайдера залов */
 .halls-slider {
-    position: relative;
-    overflow: hidden;
-    margin: 0 -10px;
+    position: relative;                 /* Для позиционирования кнопок управления */
+    overflow: hidden;                   /* Скрываем переполнение (лишние слайды) */
+    margin: 0 -10px;                    /* Отрицательные отступы для компенсации padding карточек */
 }
 
+/* Контейнер для трека слайдов */
 .slider-container {
-    overflow: hidden;
-    border-radius: 10px;
+    overflow: hidden;                   /* Скрываем переполнение */
+    border-radius: 10px;                /* Скругленные углы */
 }
 
+/* Трек слайдов (горизонтальное расположение карточек) */
 .slider-track {
-    display: flex;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;                      /* Flexbox для горизонтального расположения */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Плавная анимация сдвига */
 }
 
+/* =============================================
+   HALL CARD
+   ============================================= */
 /* Карточка зала */
 .hall-card {
-    min-width: 100%;
-    background-color: rgba(26, 26, 46, 0.9);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    margin: 0 10px;
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(10px);
-    transition: all 0.4s ease;
-    display: flex;
-    flex-direction: column;
+    min-width: 100%;                    /* На мобильных: одна карточка на весь экран */
+    background-color: rgba(26, 26, 46, 0.9); /* Полупрозрачный фон */
+    border-radius: 15px;                /* Скругленные углы */
+    overflow: hidden;                   /* Обрезаем содержимое по границам */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Тень */
+    margin: 0 10px;                     /* Горизонтальные отступы между карточками */
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Розовая граница */
+    backdrop-filter: blur(10px);        /* Размытие фона */
+    transition: all 0.4s ease;          /* Плавные переходы */
+    display: flex;                      /* Flexbox для расположения содержимого */
+    flex-direction: column;             /* Вертикальное расположение */
 }
 
+/* Эффект при наведении на карточку зала */
 .hall-card:hover {
-    border-color: var(--primary-color);
-    box-shadow: var(--neon-glow);
-    transform: translateY(-10px) scale(1.02);
+    border-color: var(--primary-color); /* Меняем цвет границы на розовый */
+    box-shadow: var(--neon-glow);       /* Добавляем свечение */
+    transform: translateY(-10px) scale(1.02); /* Поднимаем и немного увеличиваем */
 }
 
-/* Изображение зала */
+/* =============================================
+   HALL IMAGE
+   ============================================= */
+/* Контейнер для изображения зала */
 .hall-image {
-    height: 220px;
-    overflow: hidden;
-    position: relative;
-    border-bottom: 3px solid var(--primary-color);
+    height: 220px;                      /* Фиксированная высота */
+    overflow: hidden;                   /* Обрезаем изображение по границам */
+    position: relative;                 /* Для позиционирования лейбла */
+    border-bottom: 3px solid var(--primary-color); /* Розовая граница снизу */
 }
 
+/* Фотография зала */
 .hall-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.8s ease;
+    width: 100%;                        /* Полная ширина контейнера */
+    height: 100%;                       /* Полная высота контейнера */
+    object-fit: cover;                  /* Обрезаем изображение, сохраняя пропорции */
+    object-position: center;            /* Центрируем изображение */
+    transition: transform 0.8s ease;    /* Плавный зум при наведении */
 }
 
+/* Эффект увеличения изображения при наведении на карточку */
 .hall-card:hover .hall-photo {
-    transform: scale(1.1);
+    transform: scale(1.1);              /* Увеличиваем изображение на 10% */
 }
 
-/* Лейбл на фото зала */
+/* =============================================
+   HALL LABEL (VIP, Standard, etc)
+   ============================================= */
+/* Лейбл на изображении зала */
 .hall-label {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    z-index: 2;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    position: absolute;                 /* Абсолютное позиционирование поверх изображения */
+    top: 15px;                          /* Отступ сверху */
+    right: 15px;                        /* Отступ справа */
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); /* Градиентный фон */
+    color: white;                       /* Белый текст */
+    padding: 5px 15px;                  /* Внутренние отступы */
+    border-radius: 20px;                /* Сильно скругленные углы */
+    font-weight: 700;                   /* Жирный шрифт */
+    font-size: 0.9rem;                  /* Размер шрифта */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Тень */
+    z-index: 2;                         /* Поверх изображения */
+    text-transform: uppercase;          /* Текст в верхнем регистре */
+    letter-spacing: 1px;                /* Разрядка букв */
 }
 
-/* Информация о зале */
+/* =============================================
+   HALL INFORMATION
+   ============================================= */
+/* Контейнер с информацией о зале (текст, особенности, цена) */
 .hall-info {
-    padding: 25px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    padding: 25px;                      /* Внутренние отступы */
+    flex: 1;                            /* Занимает все доступное пространство */
+    display: flex;                      /* Flexbox для расположения дочерних элементов */
+    flex-direction: column;             /* Вертикальное расположение */
 }
 
+/* Название зала */
 .hall-info h4 {
-    font-size: 1.4rem;
-    margin-bottom: 12px;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+    font-size: 1.4rem;                  /* Размер шрифта */
+    margin-bottom: 12px;                /* Отступ снизу */
+    color: #fff;                        /* Белый цвет */
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.5); /* Свечение */
 }
 
+/* Описание зала */
 .hall-info p {
-    color: #ddd;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    flex: 1;
+    color: #ddd;                        /* Светло-серый цвет */
+    line-height: 1.6;                   /* Межстрочный интервал */
+    margin-bottom: 20px;                /* Отступ снизу */
+    flex: 1;                            /* Занимает все доступное пространство */
 }
 
-/* Особенности зала */
+/* =============================================
+   HALL FEATURES
+   ============================================= */
+/* Сетка особенностей зала (вместимость, микрофоны и т.д.) */
 .hall-features {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 20px;
-    padding-top: 15px;
-    border-top: 1px dashed rgba(255, 0, 255, 0.3);
+    display: grid;                      /* CSS Grid для особенностей */
+    grid-template-columns: repeat(2, 1fr); /* Две колонки на мобильных */
+    gap: 12px;                          /* Расстояние между элементами */
+    margin-bottom: 20px;                /* Отступ снизу */
+    padding-top: 15px;                  /* Отступ сверху */
+    border-top: 1px dashed rgba(255, 0, 255, 0.3); /* Пунктирная разделительная линия */
 }
 
+/* Отдельная особенность */
 .hall-features span {
-    display: flex;
-    align-items: center;
-    font-size: 0.9rem;
-    color: #ccc;
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
+    font-size: 0.9rem;                  /* Размер шрифта */
+    color: #ccc;                        /* Светло-серый цвет */
 }
 
+/* Иконка в особенности */
 .hall-features i {
-    margin-right: 8px;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
-    font-size: 1rem;
-    min-width: 20px;
+    margin-right: 8px;                  /* Отступ справа от иконки */
+    color: var(--primary-color);        /* Розовый цвет */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
+    font-size: 1rem;                    /* Размер иконки */
+    min-width: 20px;                    /* Минимальная ширина для выравнивания */
 }
 
-/* Цена зала */
+/* =============================================
+   HALL PRICE
+   ============================================= */
+/* Блок с ценой зала */
 .hall-price {
-    background: linear-gradient(45deg, rgba(255, 0, 255, 0.1), rgba(0, 255, 255, 0.1));
-    padding: 12px 20px;
-    border-radius: 10px;
-    text-align: center;
-    margin-top: auto;
-    border: 1px solid rgba(255, 0, 255, 0.3);
+    background: linear-gradient(45deg, rgba(255, 0, 255, 0.1), rgba(0, 255, 255, 0.1)); /* Полупрозрачный градиентный фон */
+    padding: 12px 20px;                 /* Внутренние отступы */
+    border-radius: 10px;                /* Скругленные углы */
+    text-align: center;                 /* Центрируем текст */
+    margin-top: auto;                   /* Прижимаем к низу карточки */
+    border: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница */
 }
 
+/* Текст с ценой */
 .hall-price span {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+    font-weight: 700;                   /* Жирный шрифт */
+    font-size: 1.2rem;                  /* Размер шрифта */
+    color: var(--primary-color);        /* Розовый цвет */
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
-/* Управление слайдером */
+/* =============================================
+   SLIDER CONTROLS
+   ============================================= */
+/* Контейнер для кнопок управления слайдером */
 .slider-controls {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
+    display: flex;                      /* Flexbox для кнопок */
+    justify-content: center;            /* Центрируем кнопки */
+    gap: 20px;                          /* Расстояние между кнопками */
+    margin-top: 30px;                   /* Отступ сверху */
 }
 
+/* Кнопки "назад" и "вперед" */
 .slider-controls button {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(45deg, var(--primary-color), #ff66cc);
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    box-shadow: var(--neon-glow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 50px;                        /* Фиксированная ширина */
+    height: 50px;                       /* Фиксированная высота (круг) */
+    border-radius: 50%;                 /* Круглая форма */
+    background: linear-gradient(45deg, var(--primary-color), #ff66cc); /* Градиент */
+    color: white;                       /* Белый цвет иконки */
+    border: none;                       /* Без границы */
+    cursor: pointer;                    /* Курсор-указатель */
+    font-size: 1.2rem;                  /* Размер иконки */
+    transition: all 0.3s ease;          /* Плавные переходы */
+    box-shadow: var(--neon-glow);       /* Свечение */
+    display: flex;                      /* Flexbox для центрирования иконки */
+    align-items: center;                /* Вертикальное центрирование */
+    justify-content: center;            /* Горизонтальное центрирование */
 }
 
+/* Эффект при наведении на кнопку слайдера */
 .slider-controls button:hover {
-    background: linear-gradient(45deg, #ff66cc, var(--primary-color));
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(255, 0, 255, 0.9);
+    background: linear-gradient(45deg, #ff66cc, var(--primary-color)); /* Инвертируем градиент */
+    transform: scale(1.1);              /* Увеличиваем кнопку */
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.9); /* Усиливаем свечение */
 }
 
+/* Эффект при нажатии на кнопку слайдера */
 .slider-controls button:active {
-    transform: scale(0.95);
+    transform: scale(0.95);             /* Немного уменьшаем кнопку */
 }
 
+/* =============================================
+   SCHEDULE
+   ============================================= */
 /* График работы */
 .schedule {
-    margin-bottom: 60px;
+    margin-bottom: 60px;                /* Отступ снизу */
 }
 
+/* Заголовок "График работы" */
 .schedule h3 {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    font-size: 1.8rem;
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
+    margin-bottom: 20px;                /* Отступ снизу */
+    font-size: 1.8rem;                  /* Размер шрифта */
 }
 
+/* Иконка в заголовке графика работы */
 .schedule h3 i {
-    margin-right: 10px;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
-    font-size: 1.5rem;
+    margin-right: 10px;                 /* Отступ справа от иконки */
+    color: var(--primary-color);        /* Розовый цвет */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
+    font-size: 1.5rem;                  /* Размер иконки */
 }
 
+/* Сетка дней недели и времени */
 .schedule-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-    max-width: 600px;
+    display: grid;                      /* CSS Grid для дней */
+    grid-template-columns: 1fr;         /* Одна колонка на мобильных */
+    gap: 15px;                          /* Расстояние между элементами */
+    max-width: 600px;                   /* Максимальная ширина */
 }
 
+/* Элемент дня недели */
 .schedule-day {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 20px;
-    background-color: rgba(26, 26, 46, 0.7);
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(5px);
-    transition: all 0.3s ease;
+    display: flex;                      /* Flexbox для названия дня и времени */
+    justify-content: space-between;     /* Название слева, время справа */
+    align-items: center;                /* Вертикальное выравнивание */
+    padding: 18px 20px;                 /* Внутренние отступы */
+    background-color: rgba(26, 26, 46, 0.7); /* Полупрозрачный фон */
+    border-radius: 10px;                /* Скругленные углы */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Тень */
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Розовая граница */
+    backdrop-filter: blur(5px);         /* Легкое размытие фона */
+    transition: all 0.3s ease;          /* Плавные переходы */
 }
 
+/* Эффект при наведении на день недели */
 .schedule-day:hover {
-    border-color: var(--primary-color);
-    transform: translateX(5px);
-    box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+    border-color: var(--primary-color); /* Меняем цвет границы на розовый */
+    transform: translateX(5px);         /* Сдвигаем вправо */
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.3); /* Добавляем свечение */
 }
 
+/* Название дня недели */
 .schedule-day span:first-child {
-    font-weight: 500;
-    color: #ddd;
+    font-weight: 500;                   /* Средняя насыщенность шрифта */
+    color: #ddd;                        /* Светло-серый цвет */
 }
 
+/* Время работы */
 .schedule-day span:last-child {
-    font-weight: 700;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    font-weight: 700;                   /* Жирный шрифт */
+    color: var(--primary-color);        /* Розовый цвет */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Примечание под графиком работы */
 .note {
-    font-style: italic;
-    color: var(--gray-color);
-    margin-top: 15px;
-    font-size: 0.9rem;
-    padding-left: 10px;
-    border-left: 3px solid var(--primary-color);
+    font-style: italic;                 /* Курсивный текст */
+    color: var(--gray-color);           /* Серый цвет */
+    margin-top: 15px;                   /* Отступ сверху */
+    font-size: 0.9rem;                  /* Размер шрифта */
+    padding-left: 10px;                 /* Отступ слева */
+    border-left: 3px solid var(--primary-color); /* Розовая граница слева */
 }
 
-/* Адаптивность для планшетов */
+/* =============================================
+   RESPONSIVE: TABLETS (768px and up)
+   ============================================= */
 @media (min-width: 768px) {
+    /* График работы: 2 колонки */
     .schedule-grid {
         grid-template-columns: repeat(2, 1fr);
     }
    
+    /* Увеличиваем высоту изображения зала */
     .hall-image {
         height: 280px;
     }
    
+    /* Особенности зала: 4 колонки */
     .hall-features {
         grid-template-columns: repeat(4, 1fr);
     }
    
+    /* Карточка зала: 2 в ряд (50% ширины) */
     .hall-card {
         min-width: calc(50% - 20px);
     }
 }
 
-/* Адаптивность для десктопов */
+/* =============================================
+   RESPONSIVE: DESKTOPS (992px and up)
+   ============================================= */
 @media (min-width: 992px) {
+    /* Увеличиваем высоту изображения зала */
     .hall-image {
         height: 320px;
     }
    
+    /* Карточка зала: 3 в ряд (33.333% ширины) */
     .hall-card {
         min-width: calc(33.333% - 20px);
     }
    
+    /* График работы: 4 колонки */
     .schedule-grid {
         grid-template-columns: repeat(4, 1fr);
     }
    
+    /* Меняем расположение текста в днях недели на вертикальное */
     .schedule-day {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
+        flex-direction: column;         /* Вертикальное расположение */
+        text-align: center;             /* Центрируем текст */
+        gap: 10px;                      /* Расстояние между строками */
     }
    
+    /* Уменьшаем размер текста названия дня */
     .schedule-day span:first-child {
         font-size: 0.95rem;
     }
    
+    /* Увеличиваем размер текста времени */
     .schedule-day span:last-child {
         font-size: 1.1rem;
     }
 }
 
-/* Адаптивность для больших экранов */
+/* =============================================
+   RESPONSIVE: LARGE DESKTOPS (1200px and up)
+   ============================================= */
 @media (min-width: 1200px) {
+    /* Увеличиваем высоту изображения зала */
     .hall-image {
         height: 350px;
     }
    
+    /* Увеличиваем отрицательные отступы слайдера */
     .halls-slider {
         margin: 0 -15px;
     }
    
+    /* Карточка зала с увеличенными отступами */
     .hall-card {
         margin: 0 15px;
         min-width: calc(33.333% - 30px);
     }
 }
 
-/* Анимация загрузки для изображений */
+/* =============================================
+   LOADING ANIMATION FOR IMAGES
+   ============================================= */
+/* Класс для состояния загрузки изображения */
 .hall-photo.loading {
     background: linear-gradient(90deg,
         rgba(255, 0, 255, 0.1) 25%,
         rgba(0, 255, 255, 0.2) 50%,
-        rgba(255, 0, 255, 0.1) 75%);
-    background-size: 200% 100%;
-    animation: loading 1.5s infinite;
+        rgba(255, 0, 255, 0.1) 75%); /* Анимированный градиент */
+    background-size: 200% 100%;        /* Размер фона для анимации */
+    animation: loading 1.5s infinite;  /* Бесконечная анимация */
 }
 
+/* Анимация загрузки (движение градиента) */
 @keyframes loading {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
 }
 
-
-
-
-/* Бронирование */
+/* =============================================
+   BOOKING SECTION
+   ============================================= */
+/* Контейнер для формы бронирования и информации */
 .booking-container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    display: flex;                      /* Flexbox для формы и информации */
+    flex-direction: column;             /* Вертикальное расположение на мобильных */
+    gap: 40px;                          /* Расстояние между элементами */
 }
 
+/* Форма бронирования */
 .booking-form {
-    background-color: rgba(26, 26, 46, 0.7);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(5px);
+    background-color: rgba(26, 26, 46, 0.7); /* Полупрозрачный фон */
+    padding: 30px;                      /* Внутренние отступы */
+    border-radius: 10px;                /* Скругленные углы */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Тень */
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Розовая граница */
+    backdrop-filter: blur(5px);         /* Легкое размытие фона */
 }
 
+/* Группа полей формы */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 20px;                /* Отступ снизу между группами */
 }
 
+/* Строка формы (для группировки полей в строку на десктопах) */
 .form-row {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: flex;                      /* Flexbox для горизонтального расположения */
+    flex-direction: column;             /* Вертикальное расположение на мобильных */
+    gap: 20px;                          /* Расстояние между полями */
 }
 
+/* Метки полей формы */
 label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
+    display: block;                     /* Блочный элемент */
+    margin-bottom: 8px;                 /* Отступ снизу */
+    font-weight: 500;                   /* Средняя насыщенность шрифта */
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
 }
 
+/* Иконка в метке поля */
 label i {
-    margin-right: 8px;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    margin-right: 8px;                  /* Отступ справа от иконки */
+    color: var(--primary-color);        /* Розовый цвет */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Поля ввода, выпадающие списки и текстовые области */
 input, select, textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid rgba(255, 0, 255, 0.3);
-    border-radius: 5px;
-    font-family: var(--font-main);
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    background-color: rgba(42, 42, 62, 0.5);
-    color: #f0f0f0;
+    width: 100%;                        /* Полная ширина */
+    padding: 12px 15px;                 /* Внутренние отступы */
+    border: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница */
+    border-radius: 5px;                 /* Скругленные углы */
+    font-family: var(--font-main);      /* Основной шрифт */
+    font-size: 1rem;                    /* Размер шрифта */
+    transition: all 0.3s ease;          /* Плавные переходы */
+    background-color: rgba(42, 42, 62, 0.5); /* Полупрозрачный фон */
+    color: #f0f0f0;                     /* Светлый цвет текста */
 }
 
+/* Состояние фокуса для полей формы */
 input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+    outline: none;                      /* Убираем стандартный outline */
+    border-color: var(--primary-color); /* Меняем цвет границы на розовый */
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5); /* Свечение */
 }
 
+/* Блок с информацией о бронировании */
 .booking-info {
-    background-color: rgba(26, 26, 46, 0.7);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(5px);
+    background-color: rgba(26, 26, 46, 0.7); /* Полупрозрачный фон */
+    padding: 30px;                      /* Внутренние отступы */
+    border-radius: 10px;                /* Скругленные углы */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Тень */
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Розовая граница */
+    backdrop-filter: blur(5px);         /* Легкое размытие фона */
 }
 
+/* Заголовок в блоке информации */
 .booking-info h3 {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
+    margin-bottom: 20px;                /* Отступ снизу */
 }
 
+/* Иконка в заголовке информации */
 .booking-info h3 i {
-    margin-right: 10px;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    margin-right: 10px;                 /* Отступ справа от иконки */
+    color: var(--primary-color);        /* Розовый цвет */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Список в блоке информации */
 .booking-info ul {
-    list-style: none;
-    margin-bottom: 30px;
+    list-style: none;                   /* Убираем маркеры списка */
+    margin-bottom: 30px;                /* Отступ снизу */
 }
 
+/* Элементы списка */
 .booking-info li {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--gray-light);
-    display: flex;
-    align-items: flex-start;
+    padding: 10px 0;                    /* Вертикальные отступы */
+    border-bottom: 1px solid var(--gray-light); /* Разделительные линии */
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: flex-start;            /* Вертикальное выравнивание по верху */
 }
 
+/* Иконка в элементах списка */
 .booking-info li i {
-    color: var(--success-color);
-    margin-right: 10px;
-    margin-top: 3px;
+    color: var(--success-color);        /* Зеленый цвет */
+    margin-right: 10px;                 /* Отступ справа от иконки */
+    margin-top: 3px;                    /* Небольшой отступ сверху для выравнивания */
 }
 
+/* Блок контактной информации */
 .contact-info {
-    background-color: rgba(42, 42, 62, 0.5);
-    padding: 20px;
-    border-radius: 10px;
+    background-color: rgba(42, 42, 62, 0.5); /* Полупрозрачный фон */
+    padding: 20px;                      /* Внутренние отступы */
+    border-radius: 10px;                /* Скругленные углы */
 }
 
+/* Заголовок контактной информации */
 .contact-info h4 {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
+    margin-bottom: 15px;                /* Отступ снизу */
 }
 
+/* Иконка в заголовке контактной информации */
 .contact-info h4 i {
-    margin-right: 10px;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    margin-right: 10px;                 /* Отступ справа от иконки */
+    color: var(--primary-color);        /* Розовый цвет */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Номер телефона */
 .phone {
-    display: inline-block;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-decoration: none;
-    margin: 10px 0;
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    display: inline-block;              /* Строчно-блочный элемент */
+    font-size: 1.5rem;                  /* Крупный размер шрифта */
+    font-weight: 700;                   /* Жирный шрифт */
+    color: var(--primary-color);        /* Розовый цвет */
+    text-decoration: none;              /* Убираем подчеркивание */
+    margin: 10px 0;                     /* Вертикальные отступы */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Эффект при наведении на номер телефона */
 .phone:hover {
-    color: #ff66cc;
+    color: #ff66cc;                     /* Более светлый розовый */
 }
 
+/* Сообщения формы (успех/ошибка) */
 .form-message {
-    padding: 15px;
-    border-radius: 5px;
-    margin-top: 20px;
-    text-align: center;
-    display: none;
+    padding: 15px;                      /* Внутренние отступы */
+    border-radius: 5px;                 /* Скругленные углы */
+    margin-top: 20px;                   /* Отступ сверху */
+    text-align: center;                 /* Центрируем текст */
+    display: none;                      /* По умолчанию скрыто */
 }
 
+/* Сообщение об успехе */
 .form-message.success {
-    background-color: rgba(0, 255, 136, 0.1);
-    color: var(--success-color);
-    border: 1px solid var(--success-color);
-    display: block;
+    background-color: rgba(0, 255, 136, 0.1); /* Полупрозрачный зеленый фон */
+    color: var(--success-color);        /* Зеленый текст */
+    border: 1px solid var(--success-color); /* Зеленая граница */
+    display: block;                     /* Показываем сообщение */
 }
 
+/* Сообщение об ошибке */
 .form-message.error {
-    background-color: rgba(220, 53, 69, 0.1);
-    color: #ff5555;
-    border: 1px solid #ff5555;
-    display: block;
+    background-color: rgba(220, 53, 69, 0.1); /* Полупрозрачный красный фон */
+    color: #ff5555;                     /* Красный текст */
+    border: 1px solid #ff5555;          /* Красная граница */
+    display: block;                     /* Показываем сообщение */
 }
 
-/* Команда */
+/* =============================================
+   TEAM SECTION
+   ============================================= */
+/* Сетка команды */
 .team-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
+    display: grid;                      /* CSS Grid для карточек сотрудников */
+    grid-template-columns: 1fr;         /* Одна колонка на мобильных */
+    gap: 30px;                          /* Расстояние между карточками */
 }
 
+/* Карточка сотрудника */
 .team-member {
-    background-color: rgba(26, 26, 46, 0.7);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(5px);
+    background-color: rgba(26, 26, 46, 0.7); /* Полупрозрачный фон */
+    border-radius: 10px;                /* Скругленные углы */
+    overflow: hidden;                   /* Обрезаем содержимое по границам */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Тень */
+    transition: transform 0.3s ease;    /* Плавный переход для трансформации */
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Розовая граница */
+    backdrop-filter: blur(5px);         /* Легкое размытие фона */
 }
 
+/* Эффект при наведении на карточку сотрудника */
 .team-member:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary-color);
-    box-shadow: var(--neon-glow);
+    transform: translateY(-10px);       /* Поднимаем карточку */
+    border-color: var(--primary-color); /* Меняем цвет границы на розовый */
+    box-shadow: var(--neon-glow);       /* Добавляем свечение */
 }
 
+/* Контейнер для фотографии сотрудника */
 .member-photo {
-    height: 250px;
-    overflow: hidden;
+    height: 250px;                      /* Фиксированная высота */
+    overflow: hidden;                   /* Обрезаем фотографию по границам */
 }
 
+/* Фотография сотрудника */
 .team-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-bottom: 3px solid var(--primary-color);
+    width: 100%;                        /* Полная ширина контейнера */
+    height: 100%;                       /* Полная высота контейнера */
+    object-fit: cover;                  /* Обрезаем изображение, сохраняя пропорции */
+    object-position: center;            /* Центрируем изображение */
+    border-bottom: 3px solid var(--primary-color); /* Розовая граница снизу */
 }
 
+/* Информация о сотруднике */
 .member-info {
-    padding: 25px;
+    padding: 25px;                      /* Внутренние отступы */
 }
 
+/* Должность сотрудника */
 .position {
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-bottom: 15px;
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    color: var(--primary-color);        /* Розовый цвет */
+    font-weight: 600;                   /* Полужирный шрифт */
+    margin-bottom: 15px;                /* Отступ снизу */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Контакты сотрудника (соцсети) */
 .member-contact {
-    display: flex;
-    gap: 15px;
-    margin-top: 15px;
+    display: flex;                      /* Flexbox для иконок соцсетей */
+    gap: 15px;                          /* Расстояние между иконками */
+    margin-top: 15px;                   /* Отступ сверху */
 }
 
+/* Ссылки на соцсети */
 .member-contact a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(42, 42, 62, 0.5);
-    color: var(--primary-color);
-    border-radius: 50%;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 0, 255, 0.3);
+    display: flex;                      /* Flexbox для центрирования иконки */
+    justify-content: center;            /* Горизонтальное центрирование */
+    align-items: center;                /* Вертикальное центрирование */
+    width: 40px;                        /* Фиксированная ширина */
+    height: 40px;                       /* Фиксированная высота (квадрат) */
+    background-color: rgba(42, 42, 62, 0.5); /* Полупрозрачный фон */
+    color: var(--primary-color);        /* Розовый цвет иконки */
+    border-radius: 50%;                 /* Круглая форма */
+    text-decoration: none;              /* Убираем подчеркивание */
+    transition: all 0.3s ease;          /* Плавные переходы */
+    border: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница */
 }
 
+/* Эффект при наведении на ссылку соцсети */
 .member-contact a:hover {
-    background-color: var(--primary-color);
-    color: white;
-    box-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+    background-color: var(--primary-color); /* Розовый фон */
+    color: white;                       /* Белая иконка */
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Бейджи специализации и опыта */
 .specialty, .experience {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 15px;
-    background-color: rgba(42, 42, 62, 0.5);
-    border-radius: 20px;
-    font-size: 0.9rem;
-    border: 1px solid rgba(255, 0, 255, 0.3);
+    display: inline-flex;               /* Строчно-блочный flex элемент */
+    align-items: center;                /* Вертикальное выравнивание */
+    padding: 8px 15px;                  /* Внутренние отступы */
+    background-color: rgba(42, 42, 62, 0.5); /* Полупрозрачный фон */
+    border-radius: 20px;                /* Сильно скругленные углы */
+    font-size: 0.9rem;                  /* Размер шрифта */
+    border: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница */
 }
 
+/* Иконки в бейджах */
 .specialty i, .experience i {
-    margin-right: 5px;
-    color: var(--primary-color);
+    margin-right: 5px;                  /* Отступ справа от иконки */
+    color: var(--primary-color);        /* Розовый цвет */
 }
 
-/* Список песен - ИСПРАВЛЕННЫЙ СКРОЛЛ */
+/* =============================================
+   SONGS SECTION (FIXED SCROLL)
+   ============================================= */
+/* Поле поиска песен */
 .songs-search {
-    display: flex;
-    margin-bottom: 30px;
+    display: flex;                      /* Flexbox для поля и кнопки */
+    margin-bottom: 30px;                /* Отступ снизу */
 }
 
+/* Поле ввода для поиска */
 #song-search {
-    flex: 1;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    flex: 1;                            /* Занимает все доступное пространство */
+    border-top-right-radius: 0;         /* Убираем скругление справа */
+    border-bottom-right-radius: 0;      /* Убираем скругление справа */
 }
 
+/* Кнопка поиска */
 #search-btn {
-    padding: 0 20px;
-    background: linear-gradient(45deg, var(--primary-color), #ff66cc);
-    color: white;
-    border: none;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    box-shadow: var(--neon-glow);
+    padding: 0 20px;                    /* Горизонтальные отступы */
+    background: linear-gradient(45deg, var(--primary-color), #ff66cc); /* Градиент */
+    color: white;                       /* Белый цвет иконки */
+    border: none;                       /* Без границы */
+    border-top-right-radius: 5px;       /* Скругляем только правые углы */
+    border-bottom-right-radius: 5px;    /* Скругляем только правые углы */
+    cursor: pointer;                    /* Курсор-указатель */
+    font-size: 1.2rem;                  /* Размер иконки */
+    box-shadow: var(--neon-glow);       /* Свечение */
 }
 
+/* Фильтры песен по жанрам */
 .songs-filter {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 30px;
-    justify-content: center;
+    display: flex;                      /* Flexbox для кнопок фильтров */
+    flex-wrap: wrap;                    /* Перенос на новую строку */
+    gap: 10px;                          /* Расстояние между кнопками */
+    margin-bottom: 30px;                /* Отступ снизу */
+    justify-content: center;            /* Центрируем кнопки */
 }
 
+/* Кнопка фильтра */
 .filter-btn {
-    padding: 8px 16px;
-    background-color: rgba(42, 42, 62, 0.5);
-    border: 1px solid rgba(255, 0, 255, 0.3);
-    border-radius: 20px;
-    font-family: var(--font-main);
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: #f0f0f0;
-    font-size: 0.9rem;
+    padding: 8px 16px;                  /* Внутренние отступы */
+    background-color: rgba(42, 42, 62, 0.5); /* Полупрозрачный фон */
+    border: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница */
+    border-radius: 20px;                /* Сильно скругленные углы */
+    font-family: var(--font-main);      /* Основной шрифт */
+    font-weight: 500;                   /* Средняя насыщенность шрифта */
+    cursor: pointer;                    /* Курсор-указатель */
+    transition: all 0.3s ease;          /* Плавные переходы */
+    color: #f0f0f0;                     /* Светлый цвет текста */
+    font-size: 0.9rem;                  /* Размер шрифта */
 }
 
+/* Активный фильтр или эффект при наведении */
 .filter-btn.active, .filter-btn:hover {
-    background-color: var(--primary-color);
-    color: white;
-    box-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
-    transform: translateY(-2px);
+    background-color: var(--primary-color); /* Розовый фон */
+    color: white;                       /* Белый текст */
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.7); /* Свечение */
+    transform: translateY(-2px);        /* Поднимаем кнопку */
 }
 
+/* Контейнер для списка песен и статистики */
 .songs-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    display: flex;                      /* Flexbox для двух колонок */
+    flex-direction: column;             /* Вертикальное расположение на мобильных */
+    gap: 30px;                          /* Расстояние между элементами */
 }
 
+/* Контейнер со списком песен */
 .songs-list {
-    max-height: 600px;
-    min-height: 300px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-right: 15px;
+    max-height: 600px;                  /* Максимальная высота с вертикальным скроллом */
+    min-height: 300px;                  /* Минимальная высота */
+    overflow-y: auto;                   /* Вертикальный скролл */
+    overflow-x: hidden;                 /* Скрываем горизонтальный скролл */
+    padding-right: 15px;                /* Отступ справа для скроллбара */
 }
 
-/* Улучшение скроллбара */
+/* =============================================
+   CUSTOM SCROLLBAR FOR SONGS LIST
+   ============================================= */
+/* Стилизация скроллбара для WebKit браузеров (Chrome, Safari, Edge) */
 .songs-list::-webkit-scrollbar {
-    width: 10px;
+    width: 10px;                        /* Ширина скроллбара */
 }
 
+/* Дорожка скроллбара */
 .songs-list::-webkit-scrollbar-track {
-    background: rgba(42, 42, 62, 0.5);
-    border-radius: 10px;
+    background: rgba(42, 42, 62, 0.5);  /* Полупрозрачный фон */
+    border-radius: 10px;                /* Скругленные углы */
 }
 
+/* Ползунок скроллбара */
 .songs-list::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    border-radius: 10px;
-    border: 2px solid rgba(26, 26, 46, 0.5);
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); /* Градиент */
+    border-radius: 10px;                /* Скругленные углы */
+    border: 2px solid rgba(26, 26, 46, 0.5); /* Граница, совпадающая с фоном */
 }
 
+/* Эффект при наведении на ползунок */
 .songs-list::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(45deg, #ff66cc, #66ffff);
+    background: linear-gradient(45deg, #ff66cc, #66ffff); /* Более яркий градиент */
 }
 
+/* =============================================
+   SONG ITEM
+   ============================================= */
+/* Элемент песни в списке */
 .song-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background-color: rgba(26, 26, 46, 0.7);
-    border-radius: 8px;
-    margin-bottom: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(5px);
-    transition: all 0.3s ease;
-    min-height: 70px;
+    display: flex;                      /* Flexbox для расположения элементов */
+    justify-content: space-between;     /* Информация слева, кнопка справа */
+    align-items: center;                /* Вертикальное выравнивание по центру */
+    padding: 15px;                      /* Внутренние отступы */
+    background-color: rgba(26, 26, 46, 0.7); /* Полупрозрачный фон */
+    border-radius: 8px;                 /* Скругленные углы */
+    margin-bottom: 10px;                /* Отступ снизу между песнями */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /* Тень */
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Розовая граница */
+    backdrop-filter: blur(5px);         /* Легкое размытие фона */
+    transition: all 0.3s ease;          /* Плавные переходы */
+    min-height: 70px;                   /* Минимальная высота */
 }
 
+/* Эффект при наведении на песню */
 .song-item:hover {
-    border-color: var(--primary-color);
-    transform: translateX(5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary-color); /* Меняем цвет границы на розовый */
+    transform: translateX(5px);         /* Сдвигаем вправо */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Усиливаем тень */
 }
 
+/* Контейнер с информацией о песне */
 .song-info {
-    flex: 1;
-    min-width: 0;
+    flex: 1;                            /* Занимает все доступное пространство */
+    min-width: 0;                       /* Решение проблемы переполнения flex-элемента */
 }
 
+/* Название песни */
 .song-info h4 {
-    margin-bottom: 8px;
-    font-size: 1.1rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    margin-bottom: 8px;                 /* Отступ снизу */
+    font-size: 1.1rem;                  /* Размер шрифта */
+    white-space: nowrap;                /* Запрещаем перенос текста */
+    overflow: hidden;                   /* Скрываем переполнение */
+    text-overflow: ellipsis;            /* Добавляем многоточие при переполнении */
 }
 
+/* Исполнитель */
 .song-artist {
-    color: var(--gray-color);
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    color: var(--gray-color);           /* Серый цвет */
+    font-size: 0.9rem;                  /* Размер шрифта */
+    margin-bottom: 8px;                 /* Отступ снизу */
+    white-space: nowrap;                /* Запрещаем перенос текста */
+    overflow: hidden;                   /* Скрываем переполнение */
+    text-overflow: ellipsis;            /* Добавляем многоточие при переполнении */
 }
 
+/* Категория (жанр) песни */
 .song-category {
-    display: inline-block;
-    padding: 3px 10px;
-    background-color: rgba(42, 42, 62, 0.7);
-    border-radius: 12px;
-    font-size: 0.8rem;
-    border: 1px solid rgba(255, 0, 255, 0.3);
-    margin-top: 5px;
-    color: var(--primary-color);
-    white-space: nowrap;
+    display: inline-block;              /* Строчно-блочный элемент */
+    padding: 3px 10px;                  /* Внутренние отступы */
+    background-color: rgba(42, 42, 62, 0.7); /* Полупрозрачный фон */
+    border-radius: 12px;                /* Сильно скругленные углы */
+    font-size: 0.8rem;                  /* Размер шрифта */
+    border: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница */
+    margin-top: 5px;                    /* Отступ сверху */
+    color: var(--primary-color);        /* Розовый текст */
+    white-space: nowrap;                /* Запрещаем перенос текста */
 }
 
+/* Кнопка запроса песни */
 .song-request-btn {
-    padding: 8px 16px;
-    background-color: rgba(42, 42, 62, 0.5);
-    color: white;
-    border: 1px solid rgba(255, 0, 255, 0.3);
-    border-radius: 5px;
-    font-family: var(--font-main);
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    margin-left: 10px;
+    padding: 8px 16px;                  /* Внутренние отступы */
+    background-color: rgba(42, 42, 62, 0.5); /* Полупрозрачный фон */
+    color: white;                       /* Белый текст */
+    border: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница */
+    border-radius: 5px;                 /* Скругленные углы */
+    font-family: var(--font-main);      /* Основной шрифт */
+    font-weight: 500;                   /* Средняя насыщенность шрифта */
+    cursor: pointer;                    /* Курсор-указатель */
+    transition: all 0.3s ease;          /* Плавные переходы */
+    white-space: nowrap;                /* Запрещаем перенос текста */
+    margin-left: 10px;                  /* Отступ слева */
 }
 
+/* Эффект при наведении на кнопку запроса */
 .song-request-btn:hover {
-    background-color: var(--primary-color);
-    box-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+    background-color: var(--primary-color); /* Розовый фон */
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* =============================================
+   SONGS STATISTICS
+   ============================================= */
+/* Блок со статистикой песен */
 .songs-stats {
-    background-color: rgba(26, 26, 46, 0.7);
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(5px);
+    background-color: rgba(26, 26, 46, 0.7); /* Полупрозрачный фон */
+    padding: 25px;                      /* Внутренние отступы */
+    border-radius: 10px;                /* Скругленные углы */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Тень */
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Розовая граница */
+    backdrop-filter: blur(5px);         /* Легкое размытие фона */
 }
 
+/* Заголовок статистики */
 .songs-stats h3 {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
+    margin-bottom: 20px;                /* Отступ снизу */
 }
 
+/* Иконка в заголовке статистики */
 .songs-stats h3 i {
-    margin-right: 10px;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    margin-right: 10px;                 /* Отступ справа от иконки */
+    color: var(--primary-color);        /* Розовый цвет */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Сетка статистики (цифры) */
 .stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 30px;
+    display: grid;                      /* CSS Grid для статистики */
+    grid-template-columns: 1fr 1fr;     /* 2 колонки на мобильных */
+    gap: 15px;                          /* Расстояние между элементами */
+    margin-bottom: 30px;                /* Отступ снизу */
 }
 
+/* Элемент статистики */
 .stat {
-    text-align: center;
-    padding: 15px;
-    background-color: rgba(42, 42, 62, 0.5);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 0, 255, 0.3);
+    text-align: center;                 /* Центрируем текст */
+    padding: 15px;                      /* Внутренние отступы */
+    background-color: rgba(42, 42, 62, 0.5); /* Полупрозрачный фон */
+    border-radius: 10px;                /* Скругленные углы */
+    border: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница */
 }
 
+/* Числовое значение статистики */
 .stat-number {
-    display: block;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    display: block;                     /* Блочный элемент (чтобы был перенос) */
+    font-size: 1.8rem;                  /* Крупный размер шрифта */
+    font-weight: 700;                   /* Жирный шрифт */
+    color: var(--primary-color);        /* Розовый цвет */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Подпись статистики */
 .stat-label {
-    font-size: 0.9rem;
-    color: var(--gray-color);
+    font-size: 0.9rem;                  /* Размер шрифта */
+    color: var(--gray-color);           /* Серый цвет */
 }
 
+/* Секция "Топ песен" */
 .top-songs {
-    padding-top: 20px;
-    border-top: 1px solid var(--gray-light);
+    padding-top: 20px;                  /* Отступ сверху */
+    border-top: 1px solid var(--gray-light); /* Разделительная линия */
 }
 
+/* Заголовок "Топ песен" */
 .top-songs h4 {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
+    margin-bottom: 15px;                /* Отступ снизу */
 }
 
+/* Иконка в заголовке топа песен */
 .top-songs h4 i {
-    margin-right: 10px;
-    color: var(--accent-color);
+    margin-right: 10px;                 /* Отступ справа от иконки */
+    color: var(--accent-color);         /* Желтый цвет */
 }
 
+/* Нумерованный список топ-песен */
 .top-songs ol {
-    padding-left: 20px;
+    padding-left: 20px;                 /* Отступ слева для нумерации */
 }
 
+/* Элемент списка топ-песен */
 .top-songs li {
-    padding: 5px 0;
+    padding: 5px 0;                     /* Вертикальные отступы */
 }
 
+/* Форма запроса песни (изначально скрыта) */
 .song-request-form {
-    display: none;
-    background-color: rgba(26, 26, 46, 0.7);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(5px);
-    margin-top: 30px;
+    display: none;                      /* По умолчанию скрыта */
+    background-color: rgba(26, 26, 46, 0.7); /* Полупрозрачный фон */
+    padding: 30px;                      /* Внутренние отступы */
+    border-radius: 10px;                /* Скругленные углы */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Тень */
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Розовая граница */
+    backdrop-filter: blur(5px);         /* Легкое размытие фона */
+    margin-top: 30px;                   /* Отступ сверху */
 }
 
-/* Меню */
+/* =============================================
+   MENU SECTION
+   ============================================= */
+/* Вкладки меню (еда, напитки, кальян) */
 .menu-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 40px;
-    justify-content: center;
+    display: flex;                      /* Flexbox для вкладок */
+    flex-wrap: wrap;                    /* Перенос на новую строку */
+    gap: 10px;                          /* Расстояние между вкладками */
+    margin-bottom: 40px;                /* Отступ снизу */
+    justify-content: center;            /* Центрируем вкладки */
 }
 
+/* Отдельная вкладка */
 .menu-tab {
-    padding: 10px 20px;
-    background-color: rgba(42, 42, 62, 0.5);
-    border: 1px solid rgba(255, 0, 255, 0.3);
-    border-radius: 5px;
-    font-family: var(--font-main);
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: #f0f0f0;
+    padding: 10px 20px;                 /* Внутренние отступы */
+    background-color: rgba(42, 42, 62, 0.5); /* Полупрозрачный фон */
+    border: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница */
+    border-radius: 5px;                 /* Скругленные углы */
+    font-family: var(--font-main);      /* Основной шрифт */
+    font-weight: 600;                   /* Полужирный шрифт */
+    cursor: pointer;                    /* Курсор-указатель */
+    transition: all 0.3s ease;          /* Плавные переходы */
+    color: #f0f0f0;                     /* Светлый цвет текста */
 }
 
+/* Активная вкладка или эффект при наведении */
 .menu-tab.active, .menu-tab:hover {
-    background-color: var(--primary-color);
-    color: white;
-    box-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+    background-color: var(--primary-color); /* Розовый фон */
+    color: white;                       /* Белый текст */
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Контейнер для содержимого меню */
 .menu-content {
-    background-color: rgba(26, 26, 46, 0.7);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(5px);
+    background-color: rgba(26, 26, 46, 0.7); /* Полупрозрачный фон */
+    padding: 30px;                      /* Внутренние отступы */
+    border-radius: 10px;                /* Скругленные углы */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Тень */
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Розовая граница */
+    backdrop-filter: blur(5px);         /* Легкое размытие фона */
 }
 
+/* Категория меню (еда, напитки и т.д.) */
 .menu-category {
-    display: none;
+    display: none;                      /* По умолчанию скрыта */
 }
 
+/* Активная категория меню */
 .menu-category.active {
-    display: block;
+    display: block;                     /* Показываем активную категорию */
 }
 
+/* Заголовок категории меню */
 .menu-category h3 {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--gray-light);
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
+    margin-bottom: 20px;                /* Отступ снизу */
+    padding-bottom: 10px;               /* Отступ снизу для границы */
+    border-bottom: 1px solid var(--gray-light); /* Разделительная линия */
 }
 
+/* Иконка в заголовке категории меню */
 .menu-category h3 i {
-    margin-right: 10px;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    margin-right: 10px;                 /* Отступ справа от иконки */
+    color: var(--primary-color);        /* Розовый цвет */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Контейнер для позиций меню внутри категории */
 .menu-items {
-    margin-bottom: 40px;
+    margin-bottom: 40px;                /* Отступ снизу между группами */
 }
 
+/* Отдельная позиция меню */
 .menu-item {
-    padding: 15px 0;
-    border-bottom: 1px dashed rgba(255, 0, 255, 0.3);
+    padding: 15px 0;                    /* Вертикальные отступы */
+    border-bottom: 1px dashed rgba(255, 0, 255, 0.3); /* Пунктирная разделительная линия */
 }
 
+/* Шапка позиции меню (название и цена) */
 .item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 8px;
+    display: flex;                      /* Flexbox для названия и цены */
+    justify-content: space-between;     /* Название слева, цена справа */
+    align-items: flex-start;            /* Выравнивание по верху */
+    margin-bottom: 8px;                 /* Отступ снизу */
 }
 
+/* Контейнер для названия с изображением */
 .item-title-with-image {
-    display: flex;
-    align-items: center;
+    display: flex;                      /* Flexbox для изображения и текста */
+    align-items: center;                /* Вертикальное выравнивание */
 }
 
+/* Изображение позиции меню */
 .menu-item-img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-right: 15px;
-    border: 2px solid var(--primary-color);
-    box-shadow: 0 0 8px rgba(255, 0, 255, 0.5);
+    width: 60px;                        /* Фиксированная ширина */
+    height: 60px;                       /* Фиксированная высота (квадрат) */
+    object-fit: cover;                  /* Обрезаем изображение, сохраняя пропорции */
+    border-radius: 8px;                 /* Скругленные углы */
+    margin-right: 15px;                 /* Отступ справа от изображения */
+    border: 2px solid var(--primary-color); /* Розовая рамка */
+    box-shadow: 0 0 8px rgba(255, 0, 255, 0.5); /* Свечение */
 }
 
+/* Цена позиции меню */
 .item-price {
-    font-weight: 700;
-    color: var(--primary-color);
-    font-size: 1.1rem;
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    font-weight: 700;                   /* Жирный шрифт */
+    color: var(--primary-color);        /* Розовый цвет */
+    font-size: 1.1rem;                  /* Размер шрифта */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Описание позиции меню */
 .item-desc {
-    color: var(--gray-color);
-    margin-bottom: 5px;
+    color: var(--gray-color);           /* Серый цвет */
+    margin-bottom: 5px;                 /* Отступ снизу */
 }
 
+/* Объем или вес позиции меню */
 .item-volume, .item-weight {
-    font-size: 0.9rem;
-    color: var(--gray-color);
+    font-size: 0.9rem;                  /* Размер шрифта */
+    color: var(--gray-color);           /* Серый цвет */
 }
 
-/* Мероприятия */
+/* =============================================
+   EVENTS SECTION
+   ============================================= */
+/* Сетка мероприятий */
 .events-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-    margin-bottom: 50px;
+    display: grid;                      /* CSS Grid для карточек мероприятий */
+    grid-template-columns: 1fr;         /* Одна колонка на мобильных */
+    gap: 30px;                          /* Расстояние между карточками */
+    margin-bottom: 50px;                /* Отступ снизу */
 }
 
+/* Карточка мероприятия */
 .event-card {
-    background-color: rgba(26, 26, 46, 0.7);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(5px);
+    background-color: rgba(26, 26, 46, 0.7); /* Полупрозрачный фон */
+    border-radius: 10px;                /* Скругленные углы */
+    overflow: hidden;                   /* Обрезаем содержимое по границам */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Тень */
+    display: flex;                      /* Flexbox для даты и информации */
+    flex-direction: column;             /* Вертикальное расположение на мобильных */
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Розовая граница */
+    backdrop-filter: blur(5px);         /* Легкое размытие фона */
 }
 
+/* Блок с датой мероприятия */
 .event-date {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    padding: 20px;
-    text-align: center;
-    min-width: 100px;
-    box-shadow: var(--neon-glow);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Градиентный фон */
+    color: white;                       /* Белый текст */
+    padding: 20px;                      /* Внутренние отступы */
+    text-align: center;                 /* Центрируем текст */
+    min-width: 100px;                   /* Минимальная ширина */
+    box-shadow: var(--neon-glow);       /* Свечение */
 }
 
+/* Число в дате */
 .day {
-    display: block;
-    font-size: 2.5rem;
-    font-weight: 800;
-    line-height: 1;
+    display: block;                     /* Блочный элемент для переноса */
+    font-size: 2.5rem;                  /* Очень крупный размер шрифта */
+    font-weight: 800;                   /* Очень жирный шрифт */
+    line-height: 1;                     /* Межстрочный интервал */
 }
 
+/* Месяц в дате */
 .month {
-    display: block;
-    font-size: 1.2rem;
-    font-weight: 600;
+    display: block;                     /* Блочный элемент для переноса */
+    font-size: 1.2rem;                  /* Крупный размер шрифта */
+    font-weight: 600;                   /* Полужирный шрифт */
 }
 
+/* Информация о мероприятии */
 .event-info {
-    padding: 25px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    padding: 25px;                      /* Внутренние отступы */
+    flex: 1;                            /* Занимает все доступное пространство */
+    display: flex;                      /* Flexbox для расположения дочерних элементов */
+    flex-direction: column;             /* Вертикальное расположение */
 }
 
+/* Время мероприятия */
 .event-time {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    color: var(--gray-color);
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
+    margin-bottom: 15px;                /* Отступ снизу */
+    color: var(--gray-color);           /* Серый цвет */
 }
 
+/* Иконка в блоке времени */
 .event-time i {
-    margin-right: 8px;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    margin-right: 8px;                  /* Отступ справа от иконки */
+    color: var(--primary-color);        /* Розовый цвет */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Описание мероприятия */
 .event-desc {
-    margin-bottom: 20px;
-    flex: 1;
+    margin-bottom: 20px;                /* Отступ снизу */
+    flex: 1;                            /* Занимает все доступное пространство */
 }
 
+/* Цена мероприятия */
 .event-price {
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    font-size: 1.2rem;
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    font-weight: 700;                   /* Жирный шрифт */
+    color: var(--primary-color);        /* Розовый цвет */
+    margin-bottom: 15px;                /* Отступ снизу */
+    font-size: 1.2rem;                  /* Размер шрифта */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Форма подписки на мероприятия */
 .event-subscribe {
-    text-align: center;
-    padding: 40px;
-    background-color: rgba(26, 26, 46, 0.7);
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(5px);
+    text-align: center;                 /* Центрируем текст */
+    padding: 40px;                      /* Большие внутренние отступы */
+    background-color: rgba(26, 26, 46, 0.7); /* Полупрозрачный фон */
+    border-radius: 10px;                /* Скругленные углы */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Тень */
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Розовая граница */
+    backdrop-filter: blur(5px);         /* Легкое размытие фона */
 }
 
+/* Заголовок формы подписки */
 .event-subscribe h3 {
-    margin-bottom: 20px;
+    margin-bottom: 20px;                /* Отступ снизу */
 }
 
+/* Форма для подписки */
 #subscribe-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 500px;
-    margin: 0 auto;
+    display: flex;                      /* Flexbox для поля и кнопки */
+    flex-direction: column;             /* Вертикальное расположение */
+    gap: 15px;                          /* Расстояние между элементами */
+    max-width: 500px;                   /* Максимальная ширина */
+    margin: 0 auto;                     /* Центрирование по горизонтали */
 }
 
+/* Поле ввода в форме подписки */
 #subscribe-form input {
-    padding: 15px;
+    padding: 15px;                      /* Увеличенные внутренние отступы */
 }
 
-/* Отзывы */
+/* =============================================
+   REVIEWS SECTION
+   ============================================= */
+/* Слайдер отзывов */
 .reviews-slider {
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 50px;
+    position: relative;                 /* Для позиционирования кнопок управления */
+    overflow: hidden;                   /* Скрываем переполнение */
+    margin-bottom: 50px;                /* Отступ снизу */
 }
 
+/* Карточка отзыва */
 .review-card {
-    min-width: 100%;
-    background-color: rgba(26, 26, 46, 0.7);
-    border-radius: 10px;
-    padding: 25px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    margin: 0 10px;
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(5px);
+    min-width: 100%;                    /* На мобильных: один отзыв на весь экран */
+    background-color: rgba(26, 26, 46, 0.7); /* Полупрозрачный фон */
+    border-radius: 10px;                /* Скругленные углы */
+    padding: 25px;                      /* Внутренние отступы */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Тень */
+    margin: 0 10px;                     /* Горизонтальные отступы между карточками */
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Розовая граница */
+    backdrop-filter: blur(5px);         /* Легкое размытие фона */
 }
 
+/* Шапка отзыва (автор и дата) */
 .review-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 20px;
+    display: flex;                      /* Flexbox для автора и даты/рейтинга */
+    justify-content: space-between;     /* Автор слева, дата/рейтинг справа */
+    align-items: flex-start;            /* Выравнивание по верху */
+    margin-bottom: 20px;                /* Отступ снизу */
 }
 
+/* Информация об авторе отзыва */
 .reviewer {
-    display: flex;
-    align-items: center;
+    display: flex;                      /* Flexbox для аватара и имени */
+    align-items: center;                /* Вертикальное выравнивание */
 }
 
+/* Аватар автора (заглушка) */
 .reviewer-avatar {
-    width: 50px;
-    height: 50px;
-    background-color: rgba(42, 42, 62, 0.5);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 15px;
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    border: 1px solid rgba(255, 0, 255, 0.3);
+    width: 50px;                        /* Фиксированная ширина */
+    height: 50px;                       /* Фиксированная высота (круг) */
+    background-color: rgba(42, 42, 62, 0.5); /* Полупрозрачный фон */
+    border-radius: 50%;                 /* Круглая форма */
+    display: flex;                      /* Flexbox для центрирования иконки */
+    justify-content: center;            /* Горизонтальное центрирование */
+    align-items: center;                /* Вертикальное центрирование */
+    margin-right: 15px;                 /* Отступ справа от аватара */
+    color: var(--primary-color);        /* Розовая иконка */
+    font-size: 1.5rem;                  /* Размер иконки */
+    border: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница */
 }
 
+/* Рейтинг (звездочки) */
 .review-rating {
-    color: var(--accent-color);
+    color: var(--accent-color);         /* Желтый цвет для звезд */
 }
 
+/* Дата отзыва */
 .review-date {
-    color: var(--gray-color);
-    font-size: 0.9rem;
+    color: var(--gray-color);           /* Серый цвет */
+    font-size: 0.9rem;                  /* Размер шрифта */
 }
 
+/* Форма добавления отзыва */
 .add-review {
-    background-color: rgba(26, 26, 46, 0.7);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 0, 255, 0.2);
-    backdrop-filter: blur(5px);
+    background-color: rgba(26, 26, 46, 0.7); /* Полупрозрачный фон */
+    padding: 30px;                      /* Внутренние отступы */
+    border-radius: 10px;                /* Скругленные углы */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Тень */
+    border: 1px solid rgba(255, 0, 255, 0.2); /* Розовая граница */
+    backdrop-filter: blur(5px);         /* Легкое размытие фона */
 }
 
+/* Заголовок формы добавления отзыва */
 .add-review h3 {
-    margin-bottom: 20px;
+    margin-bottom: 20px;                /* Отступ снизу */
 }
 
-/* Контакты */
+/* =============================================
+   CONTACTS SECTION
+   ============================================= */
+/* Контейнер для контактной информации и карты */
 .contacts-container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    display: flex;                      /* Flexbox для информации и карты */
+    flex-direction: column;             /* Вертикальное расположение на мобильных */
+    gap: 40px;                          /* Расстояние между элементами */
 }
 
+/* Заголовки в контактной информации */
 .contact-info h3 {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-top: 20px;
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
+    margin-bottom: 10px;                /* Отступ снизу */
+    margin-top: 20px;                   /* Отступ сверху */
 }
 
+/* Иконки в заголовках контактной информации */
 .contact-info h3 i {
-    margin-right: 10px;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    margin-right: 10px;                 /* Отступ справа от иконки */
+    color: var(--primary-color);        /* Розовый цвет */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Ссылки в контактной информации */
 .contact-info a {
-    color: #f0f0f0;
-    text-decoration: none;
+    color: #f0f0f0;                     /* Светлый цвет */
+    text-decoration: none;              /* Убираем подчеркивание */
 }
 
+/* Эффект при наведении на ссылки в контактной информации */
 .contact-info a:hover {
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    color: var(--primary-color);        /* Меняем цвет на розовый */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Добавляем свечение */
 }
 
+/* Контейнер для карты */
 .contact-map {
-    height: 300px;
+    height: 300px;                      /* Фиксированная высота */
 }
 
+/* Заглушка для карты (пока нет реальной карты) */
 .map-placeholder {
-    height: 100%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    box-shadow: var(--neon-glow);
+    height: 100%;                       /* Полная высота родителя */
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Градиентный фон */
+    border-radius: 10px;                /* Скругленные углы */
+    display: flex;                      /* Flexbox для контента */
+    flex-direction: column;             /* Вертикальное расположение иконки и текста */
+    justify-content: center;            /* Вертикальное центрирование */
+    align-items: center;                /* Горизонтальное центрирование */
+    color: white;                       /* Белый текст */
+    box-shadow: var(--neon-glow);       /* Свечение */
 }
 
+/* Иконка в заглушке карты */
 .map-placeholder i {
-    font-size: 4rem;
-    margin-bottom: 15px;
+    font-size: 4rem;                    /* Крупная иконка */
+    margin-bottom: 15px;                /* Отступ снизу */
 }
 
-/* Подвал */
+/* =============================================
+   FOOTER
+   ============================================= */
+/* Подвал сайта */
 .footer {
-    background-color: #0a0a1a;
-    color: white;
-    padding: 60px 0 30px;
-    border-top: 1px solid rgba(255, 0, 255, 0.3);
+    background-color: #0a0a1a;          /* Темный фон */
+    color: white;                       /* Белый текст */
+    padding: 60px 0 30px;               /* Вертикальные отступы (больше сверху) */
+    border-top: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница сверху */
 }
 
+/* Основное содержимое подвала */
 .footer-content {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    margin-bottom: 40px;
+    display: flex;                      /* Flexbox для колонок */
+    flex-direction: column;             /* Вертикальное расположение на мобильных */
+    gap: 40px;                          /* Расстояние между колонками */
+    margin-bottom: 40px;                /* Отступ снизу */
 }
 
+/* Логотип в подвале */
 .footer-logo a {
-    display: flex;
-    align-items: center;
-    color: white;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
+    color: white;                       /* Белый цвет */
+    text-decoration: none;              /* Убираем подчеркивание */
+    font-weight: 700;                   /* Жирный шрифт */
+    font-size: 1.5rem;                  /* Размер шрифта */
+    margin-bottom: 15px;                /* Отступ снизу */
 }
 
+/* Иконка в логотипе подвала */
 .footer-logo i {
-    margin-right: 10px;
-    color: var(--primary-color);
-    font-size: 1.8rem;
-    text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+    margin-right: 10px;                 /* Отступ справа от иконки */
+    color: var(--primary-color);        /* Розовый цвет */
+    font-size: 1.8rem;                  /* Размер иконки */
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.7); /* Свечение */
 }
 
+/* Заголовки в колонках подвала */
 .footer-links h4, .footer-social h4 {
-    margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 10px;
+    margin-bottom: 20px;                /* Отступ снизу */
+    position: relative;                 /* Для позиционирования псевдоэлемента */
+    padding-bottom: 10px;               /* Отступ снизу для линии */
 }
 
+/* Декоративная линия под заголовками в подвале */
 .footer-links h4::after, .footer-social h4::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    content: '';                        /* Обязательно для псевдоэлемента */
+    position: absolute;                 /* Абсолютное позиционирование */
+    bottom: 0;                          /* Прижимаем к низу */
+    left: 0;                            /* Выравниваем по левому краю */
+    width: 40px;                        /* Ширина линии */
+    height: 2px;                        /* Высота линии */
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); /* Градиент */
 }
 
+/* Список ссылок в подвале */
 .footer-links ul {
-    list-style: none;
+    list-style: none;                   /* Убираем маркеры списка */
 }
 
+/* Элементы списка ссылок */
 .footer-links li {
-    margin-bottom: 10px;
+    margin-bottom: 10px;                /* Отступ снизу между ссылками */
 }
 
+/* Ссылки в подвале */
 .footer-links a {
-    color: #ddd;
-    text-decoration: none;
-    transition: color 0.3s ease;
+    color: #ddd;                        /* Светло-серый цвет */
+    text-decoration: none;              /* Убираем подчеркивание */
+    transition: color 0.3s ease;        /* Плавный переход цвета */
 }
 
+/* Эффект при наведении на ссылки в подвале */
 .footer-links a:hover {
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    color: var(--primary-color);        /* Меняем цвет на розовый */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Добавляем свечение */
 }
 
+/* Социальные сети в подвале */
 .social-links {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 30px;
+    display: flex;                      /* Flexbox для иконок соцсетей */
+    gap: 15px;                          /* Расстояние между иконками */
+    margin-bottom: 30px;                /* Отступ снизу */
 }
 
+/* Ссылки на социальные сети */
 .social-links a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    border-radius: 50%;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 0, 255, 0.3);
+    display: flex;                      /* Flexbox для центрирования иконки */
+    justify-content: center;            /* Горизонтальное центрирование */
+    align-items: center;                /* Вертикальное центрирование */
+    width: 40px;                        /* Фиксированная ширина */
+    height: 40px;                       /* Фиксированная высота (квадрат) */
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный белый фон */
+    color: white;                       /* Белая иконка */
+    border-radius: 50%;                 /* Круглая форма */
+    text-decoration: none;              /* Убираем подчеркивание */
+    font-size: 1.2rem;                  /* Размер иконки */
+    transition: all 0.3s ease;          /* Плавные переходы */
+    border: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница */
 }
 
+/* Эффект при наведении на ссылки соцсетей */
 .social-links a:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-5px);
-    box-shadow: var(--neon-glow);
+    background-color: var(--primary-color); /* Розовый фон */
+    transform: translateY(-5px);        /* Поднимаем иконку */
+    box-shadow: var(--neon-glow);       /* Добавляем свечение */
 }
 
+/* Кнопки приложений (App Store, Google Play) */
 .app-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    display: flex;                      /* Flexbox для кнопок */
+    flex-direction: column;             /* Вертикальное расположение */
+    gap: 15px;                          /* Расстояние между кнопками */
 }
 
+/* Кнопка приложения */
 .app-btn {
-    display: flex;
-    align-items: center;
-    padding: 10px 15px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    color: white;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    border: 1px solid rgba(255, 0, 255, 0.3);
+    display: flex;                      /* Flexbox для иконки и текста */
+    align-items: center;                /* Вертикальное выравнивание */
+    padding: 10px 15px;                 /* Внутренние отступы */
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный белый фон */
+    border-radius: 5px;                 /* Скругленные углы */
+    color: white;                       /* Белый текст */
+    text-decoration: none;              /* Убираем подчеркивание */
+    transition: background-color 0.3s ease; /* Плавный переход фона */
+    border: 1px solid rgba(255, 0, 255, 0.3); /* Розовая граница */
 }
 
+/* Эффект при наведении на кнопку приложения */
 .app-btn:hover {
-    background-color: rgba(255, 0, 255, 0.3);
-    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+    background-color: rgba(255, 0, 255, 0.3); /* Полупрозрачный розовый фон */
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.5); /* Свечение */
 }
 
+/* Иконка в кнопке приложения */
 .app-btn i {
-    font-size: 1.5rem;
-    margin-right: 10px;
+    font-size: 1.5rem;                  /* Размер иконки */
+    margin-right: 10px;                 /* Отступ справа от иконки */
 }
 
+/* Нижняя часть подвала (копирайт) */
 .footer-bottom {
-    text-align: center;
-    padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.9rem;
-    color: #aaa;
+    text-align: center;                 /* Центрируем текст */
+    padding-top: 30px;                  /* Отступ сверху */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Светлая разделительная линия */
+    font-size: 0.9rem;                  /* Размер шрифта */
+    color: #aaa;                        /* Серый цвет */
 }
 
+/* Ссылки в нижней части подвала */
 .footer-bottom a {
-    color: #ddd;
-    text-decoration: none;
+    color: #ddd;                        /* Светло-серый цвет */
+    text-decoration: none;              /* Убираем подчеркивание */
 }
 
+/* Эффект при наведении на ссылки в нижней части подвала */
 .footer-bottom a:hover {
-    color: var(--primary-color);
-    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+    color: var(--primary-color);        /* Меняем цвет на розовый */
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7); /* Добавляем свечение */
 }
 
-/* Глобальные стили для скроллбара */
+/* =============================================
+   GLOBAL CUSTOM SCROLLBAR
+   ============================================= */
+/* Стилизация глобального скроллбара для всей страницы */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 10px;                        /* Ширина скроллбара */
 }
 
+/* Дорожка скроллбара */
 ::-webkit-scrollbar-track {
-    background: var(--dark-blue);
+    background: var(--dark-blue);       /* Цвет фона */
 }
 
+/* Ползунок скроллбара */
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    border-radius: 5px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); /* Градиент */
+    border-radius: 5px;                 /* Скругленные углы */
 }
 
+/* Эффект при наведении на ползунок */
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(45deg, #ff66cc, #66ffff);
+    background: linear-gradient(45deg, #ff66cc, #66ffff); /* Более яркий градиент */
 }
 
-/* Адаптивность для планшетов */
+/* =============================================
+   RESPONSIVE: TABLETS (768px and up)
+   ============================================= */
 @media (min-width: 768px) {
+    /* Увеличиваем размер заголовка в шапке */
     h1 {
         font-size: 3rem;
     }
     
+    /* Кнопки в шапке в ряд */
     .header-buttons {
         flex-direction: row;
     }
     
+    /* Преимущества: 2 колонки */
     .features {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    /* Секция "О заведении": текст и изображение в ряд */
     .about-content {
         flex-direction: row;
         align-items: center;
     }
     
+    /* Текст в секции "О заведении" */
     .about-text {
         flex: 1;
     }
     
+    /* Изображение в секции "О заведении" */
     .about-image {
         flex: 1;
     }
     
+    /* График работы: 2 колонки */
     .schedule-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    /* Поля формы бронирования в строку */
     .form-row {
         flex-direction: row;
     }
     
+    /* Команда: 2 колонки */
     .team-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    /* Статистика песен: 4 колонки */
     .stats {
         grid-template-columns: repeat(4, 1fr);
     }
     
+    /* Мероприятия: 2 колонки */
     .events-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     
+    /* Контакты: информация и карта в ряд */
     .contacts-container {
         flex-direction: row;
     }
     
+    /* Блок контактной информации */
     .contact-info {
         flex: 1;
     }
     
+    /* Блок карты */
     .contact-map {
         flex: 1;
     }
     
+    /* Подвал: колонки в ряд */
     .footer-content {
         flex-direction: row;
         justify-content: space-between;
     }
     
+    /* Колонки в подвале занимают равное пространство */
     .footer-links, .footer-social {
         flex: 1;
     }
     
+    /* Название позиции меню с изображением в строку */
     .item-title-with-image {
         flex-direction: row;
     }
     
+    /* Отступ у изображения позиции меню */
     .menu-item-img {
         margin-right: 15px;
         margin-bottom: 0;
     }
     
+    /* Увеличиваем максимальную высоту списка песен */
     .songs-list {
         max-height: 700px;
     }
 }
 
-/* Адаптивность для десктопов */
+/* =============================================
+   RESPONSIVE: DESKTOPS (992px and up)
+   ============================================= */
 @media (min-width: 992px) {
+    /* Показываем десктопное меню */
     .desktop-menu {
         display: block;
     }
     
+    /* Скрываем кнопку мобильного меню */
     .mobile-menu-btn {
         display: none;
     }
     
+    /* Карточка зала: 2 в ряд (50% ширины) */
     .hall-card {
         min-width: calc(50% - 20px);
     }
     
+    /* Бронирование: форма и информация в ряд */
     .booking-container {
         flex-direction: row;
     }
     
+    /* Контейнер формы бронирования */
     .booking-form-container {
         flex: 1;
     }
     
+    /* Блок информации о бронировании */
     .booking-info {
         flex: 1;
     }
     
+    /* Команда: 4 колонки */
     .team-grid {
         grid-template-columns: repeat(4, 1fr);
     }
     
+    /* Песни: список и статистика в ряд */
     .songs-container {
         flex-direction: row;
     }
     
+    /* Список песен (2/3 ширины) */
     .songs-list {
         flex: 2;
         max-height: 800px;
         height: auto;
     }
     
+    /* Статистика песен (1/3 ширины) */
     .songs-stats {
         flex: 1;
         max-height: 800px;
         overflow-y: auto;
     }
     
+    /* Стилизация скроллбара в статистике песен */
     .songs-stats::-webkit-scrollbar {
         width: 8px;
     }
     
+    /* Мероприятия: 4 колонки */
     .events-grid {
         grid-template-columns: repeat(4, 1fr);
     }
     
+    /* Карточка отзыва: 2 в ряд (50% ширины) */
     .review-card {
         min-width: calc(50% - 20px);
     }
 }
 
+/* =============================================
+   RESPONSIVE: LARGE DESKTOPS (1200px and up)
+   ============================================= */
 @media (min-width: 1200px) {
+    /* Карточка зала: 3 в ряд (33.333% ширины) */
     .hall-card {
         min-width: calc(33.333% - 20px);
     }
     
+    /* Карточка отзыва: 3 в ряд (33.333% ширины) */
     .review-card {
         min-width: calc(33.333% - 20px);
     }
 }
 
-/* Для очень маленьких экранов */
+/* =============================================
+   RESPONSIVE: VERY SMALL SCREENS (480px and down)
+   ============================================= */
 @media (max-width: 480px) {
+    /* Песня: вертикальное расположение элементов */
     .song-item {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
     }
     
+    /* Кнопка запроса песни справа внизу */
     .song-request-btn {
         align-self: flex-end;
         margin-left: 0;
     }
     
+    /* Центрируем кнопки фильтров песен */
     .songs-filter {
         justify-content: center;
     }
     
+    /* Уменьшаем кнопки фильтров на очень маленьких экранах */
     .filter-btn {
         padding: 6px 12px;
         font-size: 0.8rem;
     }
 }
+```
